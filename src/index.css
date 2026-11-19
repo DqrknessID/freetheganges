@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg-base: #080E17;
+  --color-bg-surface: #101A28;
+  --color-bg-surface-elevated: #152234;
+  --color-bg-surface-hover: #1E2D44;
+  --color-border-subtle: #1F2E45;
+  --color-border-strong: #2D4263;
+  --color-text-primary: #E8EEF5;
+  --color-text-muted: #94A3B8;
+  --color-accent-cyan: #48B8D0;
+  --color-accent-green: #64B88A;
+  --color-accent-amber: #E7AE55;
+  --color-accent-red: #D96A6A;
+}
+
+body {
+  background-color: #080E17;
+  color: #E8EEF5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Custom dark scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080E17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1F2E45;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2D4263;
+}
+
+/* Clean map and chart container styles */
+.leaflet-container {
+  background-color: #080E17 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+/* Accessible focus outline */
+:focus-visible {
+  outline: 2px solid #48B8D0;
+  outline-offset: 2px;
+}
