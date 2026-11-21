@@ -1,4 +1,5 @@
 export type DataProvenance = 'IN_SITU_OBSERVED' | 'SATELLITE_DERIVED' | 'MODELED_SIMULATION' | 'ILLUSTRATIVE_DEMO';
+export type ProvenanceTier = 'Tier 1' | 'Tier 2' | 'Tier 3';
 
 export interface ResearchPublication {
   id: string;
@@ -24,6 +25,7 @@ export interface SourceRegistryEntry {
   providerShortCode: 'CPCB' | 'UNEP' | 'WHO' | 'BWDB' | 'DoE' | 'NASA' | 'Copernicus' | 'ICDDRB';
   sourceUrl: string;
   dataType: DataProvenance;
+  provenanceTier?: ProvenanceTier;
   geographicCoverage: string;
   temporalCoverage: string;
   parametersCovered: string[];
@@ -32,4 +34,6 @@ export interface SourceRegistryEntry {
   verificationDate: string;
   confidenceRating: 'HIGH' | 'MEDIUM' | 'INDICATIVE';
   notes?: string;
+  licenseOrTerms?: string;
+  knownLimitations?: string;
 }

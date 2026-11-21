@@ -5,24 +5,10 @@ import userEvent from '@testing-library/user-event';
 import { ResearchReportsView } from '../components/research/ResearchReportsView';
 import { EnvironmentalAtlas } from '../components/atlas/EnvironmentalAtlas';
 import { validateCoordinates } from '../../scripts/validate-basin-data';
-import { evaluateThreshold } from './tier1-bounding-box-thresholds.test';
+import { evaluateThreshold, calculateComparisonDelta } from '../utils/thresholds';
 
-// Multi-location delta evaluation engine
-export function calculateComparisonDelta(
-  primaryVal: number | null | undefined,
-  secondaryVal: number | null | undefined
-): { delta: number | null; displayDelta: string; valid: boolean } {
-  if (
-    primaryVal === null || primaryVal === undefined || isNaN(primaryVal) ||
-    secondaryVal === null || secondaryVal === undefined || isNaN(secondaryVal)
-  ) {
-    return { delta: null, displayDelta: 'N/D', valid: false };
-  }
-
-  const delta = Math.round((primaryVal - secondaryVal) * 100) / 100;
-  const sign = delta > 0 ? '+' : '';
-  return { delta, displayDelta: `${sign}${delta}`, valid: true };
-}
+// Re-export for backwards compatibility
+export { calculateComparisonDelta };
 
 describe('Tier 3: Compound Search & Filtering Synchronization', () => {
   it('synchronizes category pill selection with keyword text search in Research Hub', async () => {

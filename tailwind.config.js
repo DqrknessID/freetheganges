@@ -8,31 +8,39 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: '#080E17',
+        darkbase: '#080E17',
         surface: {
           DEFAULT: '#101A28',
           elevated: '#152234',
           hover: '#1E2D44',
         },
         border: {
-          subtle: '#1F2E45',
+          subtle: '#1F3050',
           strong: '#2D4263',
         },
         text: {
-          primary: '#E8EEF5',
-          muted: '#94A3B8',
-          secondary: '#64748B',
+          primary: '#FFFFFF',
+          secondary: '#CBD5E1',
+          muted: '#CBD5E1',
         },
         accent: {
-          cyan: '#48B8D0',
-          green: '#64B88A',
-          amber: '#E7AE55',
-          red: '#D96A6A',
+          cyan: '#38BDF8',
+          green: '#4ADE80',
+          amber: '#FBBF24',
+          red: '#F87171',
         },
       },
+      backgroundColor: {
+        base: '#080E17',
+      },
       fontFamily: {
+        serif: [
+          'Lora',
+          'Georgia',
+          'serif',
+        ],
         sans: [
-          'Inter',
+          '"Plus Jakarta Sans"',
           '-apple-system',
           'BlinkMacSystemFont',
           '"Segoe UI"',
@@ -40,8 +48,7 @@ export default {
           'sans-serif',
         ],
         mono: [
-          '"JetBrains Mono"',
-          '"SF Mono"',
+          '"IBM Plex Mono"',
           'Consolas',
           'monospace',
         ],

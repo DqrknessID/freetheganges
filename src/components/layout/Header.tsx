@@ -77,14 +77,14 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-base font-bold tracking-tight text-text-primary group-hover:text-accent-cyan transition-colors">
+                  <span className="font-serif text-lg font-bold text-text-primary group-hover:text-accent-cyan transition-colors">
                     FREE THE GANGES
                   </span>
-                  <span className="hidden xl:inline-block px-1.5 py-0.2 rounded text-[9px] font-mono font-medium tracking-wider bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/30 uppercase">
+                  <span className="hidden xl:inline-block px-2 py-0.5 rounded text-[10px] font-sans font-medium bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/30">
                     GBM BASIN MONITOR
                   </span>
                 </div>
-                <p className="text-[10px] text-text-muted font-mono tracking-tight hidden sm:block">
+                <p className="text-[11px] text-text-secondary font-sans hidden sm:block">
                   Transboundary Environmental Intelligence Platform
                 </p>
               </div>
@@ -104,7 +104,7 @@ export const Header: React.FC<HeaderProps> = ({
                   className={`min-h-[44px] px-3.5 py-2 rounded-md text-xs font-medium tracking-wide flex items-center gap-2 transition-all relative ${
                     isActive
                       ? 'text-accent-cyan bg-surface-elevated border border-accent-cyan/30 shadow-sm'
-                      : 'text-text-muted hover:text-text-primary hover:bg-surface-hover'
+                      : 'text-text-secondary hover:text-text-primary hover:bg-surface-hover'
                   }`}
                 >
                   <span className={isActive ? 'text-accent-cyan' : 'text-text-secondary'}>
@@ -161,7 +161,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded border border-border-subtle text-text-muted hover:text-text-primary hover:bg-surface-elevated transition-colors"
+              className="lg:hidden min-h-[44px] min-w-[44px] flex items-center justify-center p-2 rounded border border-border-subtle text-text-secondary hover:text-text-primary hover:bg-surface-elevated transition-colors"
               aria-label={mobileMenuOpen ? 'Close navigation drawer' : 'Open navigation drawer'}
               aria-expanded={mobileMenuOpen}
             >
@@ -202,7 +202,7 @@ export const Header: React.FC<HeaderProps> = ({
                   className={`w-full min-h-[44px] px-3 py-2.5 rounded text-left text-xs font-medium flex items-center gap-3 transition-colors ${
                     isActive
                       ? 'text-accent-cyan bg-surface border border-accent-cyan/30'
-                      : 'text-text-muted hover:text-text-primary hover:bg-surface'
+                      : 'text-text-secondary hover:text-text-primary hover:bg-surface'
                   }`}
                 >
                   <span className={isActive ? 'text-accent-cyan' : 'text-text-secondary'}>

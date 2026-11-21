@@ -27,7 +27,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-base/80 backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       aria-labelledby="methodology-title"
@@ -44,10 +44,10 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h2 id="methodology-title" className="text-lg font-semibold text-text-primary tracking-wide">
+              <h2 id="methodology-title" className="font-serif text-xl sm:text-2xl font-bold text-white tracking-wide">
                 Scientific Methodology and Sensor Validation Disclosure
               </h2>
-              <p className="text-xs text-text-muted font-mono">
+              <p className="text-xs text-text-secondary">
                 Institutional Data Standard Revision 4.2: Transboundary Ganges-Brahmaputra-Meghna Basin
               </p>
             </div>
@@ -56,7 +56,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
             type="button"
             onClick={onClose}
             aria-label="Close methodology disclosure dialog"
-            className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded p-2 text-text-muted hover:text-text-primary hover:bg-surface-hover transition-colors"
+            className="min-h-[44px] min-w-[44px] flex items-center justify-center rounded p-2 text-text-secondary hover:text-text-primary hover:bg-surface-hover transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -66,11 +66,11 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
         <div className="flex-1 overflow-y-auto p-6 space-y-6 text-sm text-text-primary">
           {/* Section 1: Watchdog Charter */}
           <section className="space-y-2">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-accent-cyan font-mono flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-accent-cyan flex items-center gap-2">
               <Award className="w-4 h-4 text-accent-cyan" />
               1. Institutional Charter and Independent Watchdog Mandate
             </h3>
-            <p className="text-text-muted leading-relaxed">
+            <p className="text-text-secondary leading-relaxed">
               FREE THE GANGES operates as an independent, non-governmental environmental intelligence platform. 
               Its mandate is to document, analyze, and synthesize environmental degradation across the transboundary 
               Ganges-Brahmaputra-Meghna (GBM) river basin encompassing India and Bangladesh. The platform does not 
@@ -81,7 +81,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
 
           {/* Section 2: Data Provenance Tiers */}
           <section className="space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-accent-cyan font-mono flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-accent-cyan flex items-center gap-2">
               <Database className="w-4 h-4 text-accent-cyan" />
               2. Data Provenance and Quality Assurance Tiers
             </h3>
@@ -90,7 +90,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
                 <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-accent-green/20 text-accent-green border border-accent-green/40">
                   IN_SITU_OBSERVED
                 </span>
-                <p className="text-xs text-text-muted">
+                <p className="text-xs text-text-secondary">
                   Physical water sampling and laboratory wet-chemistry assays conducted by certified institutions 
                   (Central Pollution Control Board, Bangladesh Water Development Board, British Geological Survey). 
                   Laboratory calibration follows Standard Methods for the Examination of Water and Wastewater (APHA).
@@ -101,7 +101,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
                 <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-accent-cyan/20 text-accent-cyan border border-accent-cyan/40">
                   SATELLITE_DERIVED
                 </span>
-                <p className="text-xs text-text-muted">
+                <p className="text-xs text-text-secondary">
                   Earth observation telemetry sourced from Copernicus Sentinel-2, Sentinel-5P TROPOMI, NASA MODIS, 
                   and Landsat 8/9 instruments. Algorithms utilize validated atmospheric corrections and spectral indices 
                   for suspended sediment concentration and surface chlorophyll-a.
@@ -112,17 +112,17 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
                 <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-accent-amber/20 text-accent-amber border border-accent-amber/40">
                   MODELED_SIMULATION
                 </span>
-                <p className="text-xs text-text-muted">
+                <p className="text-xs text-text-secondary">
                   Hydrodynamic and pollutant transport estimations generated via 1D/2D hydraulic models (HEC-RAS, Delft3D, 
                   SWAT). Used to interpolate seasonal dissolved oxygen deficits and estuarine salinity fronts across unmonitored reaches.
                 </p>
               </div>
 
               <div className="p-3 rounded border border-accent-red/30 bg-accent-red/5 space-y-1">
-                <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-accent-red/20 text-accent-red border border-accent-red/40">
+                <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-accent-red/20 text-[#FCA5A5] border border-accent-red/40">
                   ILLUSTRATIVE_DEMO
                 </span>
-                <p className="text-xs text-text-muted">
+                <p className="text-xs text-text-secondary">
                   Explicitly marked demonstrative or interpolated historical data used to illustrate interface functionality 
                   where real-time sensor streams are undergoing institutional verification. Clearly identified with visual badges.
                 </p>
@@ -132,16 +132,16 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
 
           {/* Section 3: Threshold Standards */}
           <section className="space-y-3">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-accent-cyan font-mono flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-accent-cyan flex items-center gap-2">
               <Info className="w-4 h-4 text-accent-cyan" />
               3. Regulatory Standards and Evaluation Criteria
             </h3>
-            <p className="text-text-muted text-xs leading-relaxed">
+            <p className="text-text-secondary text-xs leading-relaxed">
               Every parameter evaluated in FREE THE GANGES is cross-referenced against three established statutory benchmarks:
             </p>
             <div className="overflow-x-auto border border-border-subtle rounded">
               <table className="w-full text-left text-xs">
-                <thead className="bg-surface-elevated text-text-primary font-mono border-b border-border-subtle">
+                <thead className="bg-surface-elevated text-text-primary border-b border-border-subtle">
                   <tr>
                     <th className="p-2.5">Indicator</th>
                     <th className="p-2.5">Unit</th>
@@ -150,7 +150,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
                     <th className="p-2.5">Bangladesh ECR Standard</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-border-subtle text-text-muted font-mono">
+                <tbody className="divide-y divide-border-subtle text-text-secondary">
                   <tr>
                     <td className="p-2.5 text-text-primary">Dissolved Oxygen (DO)</td>
                     <td className="p-2.5">mg/L</td>
@@ -193,11 +193,11 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
 
           {/* Section 4: Geographic Envelope */}
           <section className="space-y-2">
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-accent-cyan font-mono flex items-center gap-2">
+            <h3 className="text-sm font-semibold text-accent-cyan flex items-center gap-2">
               <AlertTriangle className="w-4 h-4 text-accent-cyan" />
               4. Geographic Scope and Spatial Envelope
             </h3>
-            <p className="text-text-muted text-xs leading-relaxed">
+            <p className="text-text-secondary text-xs leading-relaxed">
               All geospatial features strictly conform to the Ganges-Brahmaputra-Meghna regional basin envelope:
               latitude range 20.0000 degrees North to 32.0000 degrees North, longitude range 73.0000 degrees East to 98.0000 degrees East. 
               The spatial boundary covers upstream glaciated headwaters (Gangotri and Yamunotri glaciers), middle agricultural plains, 
@@ -208,7 +208,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
 
         {/* Footer */}
         <div className="flex items-center justify-between px-6 py-3.5 border-t border-border-subtle bg-surface-elevated">
-          <span className="text-xs text-text-muted font-mono">
+          <span className="text-xs text-text-secondary">
             Scientific Oversight Committee: Free The Ganges Research Consortium
           </span>
           <button

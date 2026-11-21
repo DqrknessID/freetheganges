@@ -1,5 +1,9 @@
+import * as fs from 'fs';
+import * as path from 'path';
+import * as os from 'os';
 import { describe, it, expect } from 'vitest';
 import { validateCoordinates, validateBasinDatasets, BOUNDING_BOX } from '../../scripts/validate-basin-data';
+import { evaluateThreshold, calculateComparisonDelta } from '../utils/thresholds';
 import { 
   ThresholdStandard, 
   IndicatorCategory, 
@@ -7,34 +11,8 @@ import {
   HotspotIndicator 
 } from '../types';
 
-// Helper function to evaluate value against threshold
-export function evaluateThreshold(
-  value: number | null | undefined,
-  threshold: number,
-  direction: 'max' | 'min'
-): { status: 'Compliant' | 'Warning' | 'Critical'; exceeded: boolean; displayValue: string } {
-  if (value === null || value === undefined || isNaN(value)) {
-    return { status: 'Warning', exceeded: false, displayValue: 'N/D' };
-  }
-
-  let exceeded = false;
-  if (direction === 'max') {
-    exceeded = value > threshold;
-  } else {
-    exceeded = value < threshold;
-  }
-
-  let status: 'Compliant' | 'Warning' | 'Critical' = 'Compliant';
-  if (exceeded) {
-    if (direction === 'max') {
-      status = value > threshold * 2 ? 'Critical' : 'Warning';
-    } else {
-      status = value < threshold * 0.5 ? 'Critical' : 'Warning';
-    }
-  }
-
-  return { status, exceeded, displayValue: `${value}` };
-}
+// Re-export for backwards compatibility
+export { evaluateThreshold, calculateComparisonDelta };
 
 describe('Tier 1: Geospatial Bounding Box Verification', () => {
   it('validates bounding box constant coordinates', () => {
@@ -145,6 +123,141 @@ describe('Tier 1: Geospatial Bounding Box Verification', () => {
     expect(res.valid).toBe(true);
     expect(res.errors).toHaveLength(0);
     expect(res.checkedCount).toBe(0);
+  });
+
+  it('validates GeoJSON MultiLineString geometries and catches out-of-bounds coordinates', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'geojson-multiline-test-'));
+    try {
+      // 1. Valid braided channel MultiLineString within GBM basin
+      const validGeoJSON = {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            properties: { name: 'Brahmaputra Braided Channels' },
+            geometry: {
+              type: 'MultiLineString',
+              coordinates: [
+                [[91.73, 26.14], [91.80, 26.18]],
+                [[91.75, 26.12], [91.82, 26.16]],
+              ],
+            },
+          },
+        ],
+      };
+      fs.writeFileSync(path.join(tempDir, 'valid-braided.geojson'), JSON.stringify(validGeoJSON));
+      const validRes = validateBasinDatasets(tempDir);
+      expect(validRes.valid).toBe(true);
+      expect(validRes.checkedCount).toBe(4);
+      expect(validRes.errors).toHaveLength(0);
+
+      // 2. Out-of-bounds MultiLineString coordinates
+      const invalidGeoJSON = {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            properties: { name: 'Adversarial MultiLine Reach' },
+            geometry: {
+              type: 'MultiLineString',
+              coordinates: [
+                [[50.0, 10.0], [51.0, 11.0]],
+              ],
+            },
+          },
+        ],
+      };
+      fs.writeFileSync(path.join(tempDir, 'invalid-multiline.geojson'), JSON.stringify(invalidGeoJSON));
+      const invalidRes = validateBasinDatasets(tempDir);
+      expect(invalidRes.valid).toBe(false);
+      expect(invalidRes.errors.length).toBeGreaterThanOrEqual(2);
+      expect(invalidRes.errors.some(err => err.includes('multiline[0][0]'))).toBe(true);
+      expect(invalidRes.errors.some(err => err.includes('Latitude 10°N outside GBM bounding box'))).toBe(true);
+      expect(invalidRes.errors.some(err => err.includes('Longitude 50°E outside GBM bounding box'))).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('validates GeoJSON MultiPolygon geometries and catches out-of-bounds coordinates', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'geojson-multipoly-test-'));
+    try {
+      // 1. Valid MultiPolygon (Sundarbans mangrove island complexes)
+      const validGeoJSON = {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            properties: { name: 'Sundarbans Mangrove Complex' },
+            geometry: {
+              type: 'MultiPolygon',
+              coordinates: [
+                [
+                  [[88.90, 21.80], [89.10, 21.80], [89.10, 21.95], [88.90, 21.95], [88.90, 21.80]],
+                ],
+              ],
+            },
+          },
+        ],
+      };
+      fs.writeFileSync(path.join(tempDir, 'valid-multipoly.geojson'), JSON.stringify(validGeoJSON));
+      const validRes = validateBasinDatasets(tempDir);
+      expect(validRes.valid).toBe(true);
+      expect(validRes.checkedCount).toBe(5);
+      expect(validRes.errors).toHaveLength(0);
+
+      // 2. Out-of-bounds MultiPolygon
+      const invalidGeoJSON = {
+        type: 'FeatureCollection',
+        features: [
+          {
+            type: 'Feature',
+            properties: { name: 'Adversarial MultiPoly Island' },
+            geometry: {
+              type: 'MultiPolygon',
+              coordinates: [
+                [
+                  [[50.0, 10.0], [51.0, 10.0], [51.0, 11.0], [50.0, 11.0], [50.0, 10.0]],
+                ],
+              ],
+            },
+          },
+        ],
+      };
+      fs.writeFileSync(path.join(tempDir, 'invalid-multipoly.geojson'), JSON.stringify(invalidGeoJSON));
+      const invalidRes = validateBasinDatasets(tempDir);
+      expect(invalidRes.valid).toBe(false);
+      expect(invalidRes.errors.length).toBeGreaterThanOrEqual(2);
+      expect(invalidRes.errors.some(err => err.includes('multipoly[0][0][0]'))).toBe(true);
+      expect(invalidRes.errors.some(err => err.includes('Latitude 10°N outside GBM bounding box'))).toBe(true);
+      expect(invalidRes.errors.some(err => err.includes('Longitude 50°E outside GBM bounding box'))).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
+  });
+
+  it('extracts and validates coordinates in TypeScript data files without dropping coordinates outside [15°N, 35°N]', () => {
+    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'ts-coordinates-test-'));
+    try {
+      // TypeScript dataset declaring Bangalore South (Lat 12.9716°N < 15°N) and London
+      const tsContent = `
+        export const sampleBasinStations = [
+          { name: 'Bangalore South', coordinates: [12.9716, 77.5946] },
+          { name: 'London UK', coordinates: [51.5074, -0.1278] },
+          { name: 'Kanpur Tannery Reach', coordinates: [26.4499, 80.3319] }
+        ];
+      `;
+      fs.writeFileSync(path.join(tempDir, 'sample_data.ts'), tsContent);
+      const res = validateBasinDatasets(tempDir);
+      // Bangalore is < 20°N; London is < 73°E and > 32°N; Kanpur is valid.
+      expect(res.checkedCount).toBe(3);
+      expect(res.valid).toBe(false);
+      expect(res.errors.length).toBeGreaterThanOrEqual(2);
+      expect(res.errors.some(err => err.includes('Latitude 12.9716°N outside GBM bounding box'))).toBe(true);
+      expect(res.errors.some(err => err.includes('outside GBM bounding box'))).toBe(true);
+    } finally {
+      fs.rmSync(tempDir, { recursive: true, force: true });
+    }
   });
 });
 
@@ -339,6 +452,64 @@ describe('Tier 1: Data Schema Integrity & Provenance Tagging', () => {
     const realZeroResult = evaluateThreshold(0.0, 5.0, 'min');
     expect(realZeroResult.displayValue).toBe('0');
     expect(realZeroResult.exceeded).toBe(true);
+  });
+
+  it('strictly guards evaluateThreshold against JavaScript type coercion for non-numeric falsy inputs', () => {
+    // Empty string "" must return N/D and not coerce to 0 or Critical
+    const emptyStrMin = evaluateThreshold("" as any, 5.0, 'min');
+    expect(emptyStrMin.displayValue).toBe('N/D');
+    expect(emptyStrMin.exceeded).toBe(false);
+    expect(emptyStrMin.status).toBe('Warning');
+
+    const emptyStrMax = evaluateThreshold("" as any, 5.0, 'max');
+    expect(emptyStrMax.displayValue).toBe('N/D');
+    expect(emptyStrMax.exceeded).toBe(false);
+    expect(emptyStrMax.status).toBe('Warning');
+
+    // Boolean false must return N/D and not coerce to 0
+    const boolFalseMin = evaluateThreshold(false as any, 5.0, 'min');
+    expect(boolFalseMin.displayValue).toBe('N/D');
+    expect(boolFalseMin.exceeded).toBe(false);
+    expect(boolFalseMin.status).toBe('Warning');
+
+    // Boolean true must return N/D
+    const boolTrueMin = evaluateThreshold(true as any, 5.0, 'min');
+    expect(boolTrueMin.displayValue).toBe('N/D');
+    expect(boolTrueMin.exceeded).toBe(false);
+    expect(boolTrueMin.status).toBe('Warning');
+
+    // Object and array inputs must return N/D
+    expect(evaluateThreshold({} as any, 5.0, 'min').displayValue).toBe('N/D');
+    expect(evaluateThreshold([] as any, 5.0, 'min').displayValue).toBe('N/D');
+
+    // Real numeric zero must be evaluated accurately
+    const numericZeroMin = evaluateThreshold(0.0, 5.0, 'min');
+    expect(numericZeroMin.displayValue).toBe('0');
+    expect(numericZeroMin.exceeded).toBe(true);
+    expect(numericZeroMin.status).toBe('Critical');
+
+    const numericZeroMax = evaluateThreshold(0.0, 5.0, 'max');
+    expect(numericZeroMax.displayValue).toBe('0');
+    expect(numericZeroMax.exceeded).toBe(false);
+    expect(numericZeroMax.status).toBe('Compliant');
+  });
+
+  it('strictly guards calculateComparisonDelta against JavaScript type coercion for non-numeric inputs', () => {
+    const emptyDelta = calculateComparisonDelta("" as any, 5.0);
+    expect(emptyDelta.valid).toBe(false);
+    expect(emptyDelta.displayDelta).toBe('N/D');
+    expect(emptyDelta.delta).toBeNull();
+
+    const falseDelta = calculateComparisonDelta(5.0, false as any);
+    expect(falseDelta.valid).toBe(false);
+    expect(falseDelta.displayDelta).toBe('N/D');
+    expect(falseDelta.delta).toBeNull();
+
+    // Numeric zeroes are valid
+    const zeroDelta = calculateComparisonDelta(0.0, 5.0);
+    expect(zeroDelta.valid).toBe(true);
+    expect(zeroDelta.delta).toBe(-5);
+    expect(zeroDelta.displayDelta).toBe('-5');
   });
 
   it('verifies HotspotIndicator contract compliance', () => {

@@ -32,17 +32,55 @@ export interface ParameterMetadata {
   unit: string;
   description: string;
   whoGuideline?: number;
+  whoGuidelineDisplay?: string;
   cpcbStandard?: {
     standardClass: string;
     value: number;
     direction: 'max' | 'min';
   };
+  cpcbStandardDisplay?: string;
   bangladeshStandard?: {
     value: number;
     direction: 'max' | 'min';
   };
+  ecrStandardDisplay?: string;
   criticalDangerThreshold: number;
   direction: 'max' | 'min';
+}
+
+export interface MonitoringStation {
+  id: string;
+  name: string;
+  selectValue: string;
+  reach: string;
+  jurisdiction: 'India' | 'Bangladesh';
+  coordinates: [number, number]; // [lat, lng] strictly 20-32 N, 73-98 E
+  provider: string;
+  description: string;
+}
+
+export interface IndicatorObservation {
+  id: string;
+  date: string;
+  stationId: string;
+  stationName: string;
+  parameterId: string;
+  parameterName: string;
+  category: IndicatorCategory;
+  value: number;
+  unit: string;
+  statutoryLimit: number;
+  standardName: 'WHO' | 'CPCB' | 'ECR';
+  status: 'Compliant' | 'Warning' | 'Critical';
+  provenance: 'IN_SITU_OBSERVED' | 'SATELLITE_DERIVED' | 'MODELED_SIMULATION' | 'ILLUSTRATIVE_DEMO';
+}
+
+export interface ChartDataPoint {
+  date: string;
+  rawDate: string;
+  primaryValue: number;
+  secondaryValue: number;
+  thresholdLimit?: number;
 }
 
 export interface MultiLocationComparisonData {

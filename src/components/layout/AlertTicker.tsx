@@ -91,14 +91,11 @@ export const AlertTicker: React.FC<AlertTickerProps> = ({ onSelectAlert }) => {
     <div className="w-full bg-[#080E17] border-b border-border-subtle/80 text-xs text-text-primary px-3 sm:px-6 py-1.5 flex items-center justify-between gap-3">
       {/* Lead wire label */}
       <div className="flex items-center gap-2 shrink-0">
-        <span className="flex h-2 w-2 relative">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-red opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-red"></span>
-        </span>
-        <span className="font-mono font-semibold tracking-wider uppercase text-accent-cyan flex items-center gap-1.5 text-[11px]">
+        <span className="inline-flex rounded-full h-2 w-2 bg-accent-red"></span>
+        <span className="font-semibold text-accent-cyan flex items-center gap-1.5 text-xs">
           <Radio className="w-3.5 h-3.5 text-accent-cyan" />
-          <span className="hidden sm:inline">BASIN INTELLIGENCE WIRE</span>
-          <span className="sm:hidden">WIRE</span>
+          <span className="hidden sm:inline">Basin Intelligence Wire</span>
+          <span className="sm:hidden">Wire</span>
         </span>
       </div>
 
@@ -113,7 +110,7 @@ export const AlertTicker: React.FC<AlertTickerProps> = ({ onSelectAlert }) => {
         <span className={`px-1.5 py-0.5 rounded text-[10px] font-mono font-medium border uppercase tracking-wider shrink-0 ${severityBadgeClass(currentAlert.severity)}`}>
           {currentAlert.category}
         </span>
-        <span className="text-text-muted font-mono shrink-0 hidden md:inline text-[11px]">
+        <span className="text-text-secondary font-mono shrink-0 hidden md:inline text-[11px]">
           [{currentAlert.location}]
         </span>
         <p className="truncate text-text-primary hover:text-accent-cyan transition-colors text-[11px] sm:text-xs">
@@ -122,7 +119,7 @@ export const AlertTicker: React.FC<AlertTickerProps> = ({ onSelectAlert }) => {
       </button>
 
       {/* Controls */}
-      <div className="flex items-center gap-1 shrink-0 text-text-muted">
+      <div className="flex items-center gap-1 shrink-0 text-text-secondary">
         <span className="font-mono text-[10px] hidden lg:inline mr-1 text-text-secondary">
           {currentIndex + 1}/{SAMPLE_ALERTS.length}
         </span>

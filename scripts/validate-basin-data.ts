@@ -70,10 +70,14 @@ export function validateBasinDatasets(dataDir: string): CoordinateValidationResu
       if (file.endsWith('.json') || file.endsWith('.geojson')) {
         const content = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
 
-        // Check GeoJSON FeatureCollection
-        if (content.type === 'FeatureCollection' && Array.isArray(content.features)) {
-          for (let i = 0; i < content.features.length; i++) {
-            const feature = content.features[i];
+        // Check GeoJSON FeatureCollection or single Feature
+        const features = content.type === 'FeatureCollection' && Array.isArray(content.features)
+          ? content.features
+          : (content.type === 'Feature' ? [content] : []);
+
+        if (features.length > 0) {
+          for (let i = 0; i < features.length; i++) {
+            const feature = features[i];
             const geom = feature.geometry;
             const context = `${file} -> feature[${i}] (${feature.properties?.name || 'unnamed'})`;
 
@@ -94,6 +98,36 @@ export function validateBasinDatasets(dataDir: string): CoordinateValidationResu
                   allErrors.push(...validateCoordinates(lat, lng, `${context} -> ring[${ring}][${j}]`));
                   checkedCount++;
                 }
+              }
+            } else if (geom && geom.type === 'MultiLineString' && Array.isArray(geom.coordinates)) {
+              for (let line = 0; line < geom.coordinates.length; line++) {
+                if (Array.isArray(geom.coordinates[line])) {
+                  for (let j = 0; j < geom.coordinates[line].length; j++) {
+                    const [lng, lat] = geom.coordinates[line][j];
+                    allErrors.push(...validateCoordinates(lat, lng, `${context} -> multiline[${line}][${j}]`));
+                    checkedCount++;
+                  }
+                }
+              }
+            } else if (geom && geom.type === 'MultiPolygon' && Array.isArray(geom.coordinates)) {
+              for (let poly = 0; poly < geom.coordinates.length; poly++) {
+                if (Array.isArray(geom.coordinates[poly])) {
+                  for (let ring = 0; ring < geom.coordinates[poly].length; ring++) {
+                    if (Array.isArray(geom.coordinates[poly][ring])) {
+                      for (let j = 0; j < geom.coordinates[poly][ring].length; j++) {
+                        const [lng, lat] = geom.coordinates[poly][ring][j];
+                        allErrors.push(...validateCoordinates(lat, lng, `${context} -> multipoly[${poly}][${ring}][${j}]`));
+                        checkedCount++;
+                      }
+                    }
+                  }
+                }
+              }
+            } else if (geom && geom.type === 'MultiPoint' && Array.isArray(geom.coordinates)) {
+              for (let pt = 0; pt < geom.coordinates.length; pt++) {
+                const [lng, lat] = geom.coordinates[pt];
+                allErrors.push(...validateCoordinates(lat, lng, `${context} -> multipoint[${pt}]`));
+                checkedCount++;
               }
             }
           }
@@ -130,18 +164,39 @@ export function validateBasinDatasets(dataDir: string): CoordinateValidationResu
         }
       } else if (file.endsWith('.ts')) {
         const fileContent = fs.readFileSync(filePath, 'utf-8');
-        // Match coordinate pairs in TypeScript data files
-        const coordRegex = /\[\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\]/g;
-        let match;
         let index = 0;
-        while ((match = coordRegex.exec(fileContent)) !== null) {
+
+        // Match coordinate array declarations without dropping out-of-bounds coordinates
+        // 1. Match single coordinate pairs declared as coordinates / centroid / coordinatesCentroid / coords / latlng
+        // e.g. coordinates: [26.43, 80.40] or coordinates: [12.9716, 77.5946]
+        const singleCoordRegex = /(?:coordinates|centroid|coordinatesCentroid|coords|latlng)\s*:\s*\[\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\]/gi;
+        let match;
+        while ((match = singleCoordRegex.exec(fileContent)) !== null) {
+          index++;
           const num1 = parseFloat(match[1]);
           const num2 = parseFloat(match[2]);
-          const isPlausibleLat = (num1 >= 15 && num1 <= 35) || (num2 >= 15 && num2 <= 35);
-          const isPlausibleLng = (num1 >= 65 && num1 <= 105) || (num2 >= 65 && num2 <= 105);
+          let lat = num1;
+          let lng = num2;
+          if (num1 > 50 && num2 < 50) {
+            lng = num1;
+            lat = num2;
+          }
+          allErrors.push(...validateCoordinates(lat, lng, `${file} -> coordinate[${index}]`));
+          checkedCount++;
+        }
 
-          if (isPlausibleLat && isPlausibleLng) {
+        // 2. Match nested coordinate arrays under coordinates / centroid / coords / latlng
+        // e.g. coordinates: [ [80.33, 26.44], [82.97, 25.31] ]
+        const nestedBlockRegex = /(?:coordinates|centroid|coordinatesCentroid|coords|latlng)\s*:\s*\[\s*(\[\s*[-?\d\s.,\[\]]+?\])\s*\]/gi;
+        let blockMatch;
+        while ((blockMatch = nestedBlockRegex.exec(fileContent)) !== null) {
+          const blockContent = blockMatch[1];
+          const pairRegex = /\[\s*(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)\s*\]/g;
+          let pairMatch;
+          while ((pairMatch = pairRegex.exec(blockContent)) !== null) {
             index++;
+            const num1 = parseFloat(pairMatch[1]);
+            const num2 = parseFloat(pairMatch[2]);
             let lat = num1;
             let lng = num2;
             if (num1 > 50 && num2 < 50) {
@@ -180,6 +235,9 @@ if (invokedFilePath === currentFilePath || invokedFilePath.replace(/\\/g, '/').e
     result.errors.forEach(err => console.error(`  - ${err}`));
     process.exit(1);
   } else {
+    if (result.checkedCount === 0) {
+      console.warn(`\n⚠️ [Validation Warning] No geospatial data points were found to validate in ${targetDir}.`);
+    }
     console.log(`\n✅ [Validation Passed] All coordinates strictly within GBM basin [20°N–32°N, 73°E–98°E].\n`);
     process.exit(0);
   }

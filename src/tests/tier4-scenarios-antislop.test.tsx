@@ -7,8 +7,7 @@ import userEvent from '@testing-library/user-event';
 import { App } from '../App';
 import { EnvironmentalAtlas } from '../components/atlas/EnvironmentalAtlas';
 import { ResearchReportsView } from '../components/research/ResearchReportsView';
-import { evaluateThreshold } from './tier1-bounding-box-thresholds.test';
-import { calculateComparisonDelta } from './tier3-cross-feature-workflows.test';
+import { evaluateThreshold, calculateComparisonDelta } from '../utils/thresholds';
 
 describe('Tier 4: Scenario 1 - Kanpur Jajmau Chromium Crisis Assessment', () => {
   it('exercises crisis assessment for Hexavalent Chromium exceedance in Jajmau tannery reach', () => {
