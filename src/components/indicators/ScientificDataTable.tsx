@@ -98,9 +98,9 @@ export const ScientificDataTable: React.FC<ScientificDataTableProps> = ({ observ
       return <ArrowUpDown className="w-3.5 h-3.5 text-text-secondary opacity-50" />;
     }
     return sortOrder === 'asc' ? (
-      <ArrowUp className="w-3.5 h-3.5 text-accent-cyan" />
+      <ArrowUp className="w-3.5 h-3.5 text-text-primary" />
     ) : (
-      <ArrowDown className="w-3.5 h-3.5 text-accent-cyan" />
+      <ArrowDown className="w-3.5 h-3.5 text-text-primary" />
     );
   };
 
@@ -132,29 +132,29 @@ export const ScientificDataTable: React.FC<ScientificDataTableProps> = ({ observ
     switch (provenance) {
       case 'IN_SITU_OBSERVED':
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-accent-cyan/10 text-accent-cyan border border-accent-cyan/20">
-            <Radio className="w-3 h-3" />
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-surface-elevated text-text-secondary border border-border-subtle">
+            <Radio className="w-3 h-3 text-text-secondary" />
             In-Situ Observed
           </span>
         );
       case 'SATELLITE_DERIVED':
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-accent-purple/10 text-[#A388EE] border border-[#A388EE]/30">
-            <Satellite className="w-3 h-3" />
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-surface-elevated text-text-secondary border border-border-subtle">
+            <Satellite className="w-3 h-3 text-text-secondary" />
             Satellite Derived
           </span>
         );
       case 'MODELED_SIMULATION':
         return (
-          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-accent-amber/10 text-accent-amber border border-accent-amber/20">
-            <Cpu className="w-3 h-3" />
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-surface-elevated text-text-secondary border border-border-subtle">
+            <Cpu className="w-3 h-3 text-text-secondary" />
             Modeled
           </span>
         );
       default:
         return (
           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-mono bg-surface-elevated text-text-secondary border border-border-subtle">
-            <Database className="w-3 h-3" />
+            <Database className="w-3 h-3 text-text-secondary" />
             Demo Simulation
           </span>
         );
@@ -167,7 +167,7 @@ export const ScientificDataTable: React.FC<ScientificDataTableProps> = ({ observ
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-border-subtle">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <TableIcon className="w-4 h-4 text-accent-cyan" />
+            <TableIcon className="w-4 h-4 text-text-secondary" />
             <h3 className="text-base sm:text-lg font-sans font-bold text-white">
               Scientific Telemetry Records and Observations
             </h3>
@@ -190,7 +190,7 @@ export const ScientificDataTable: React.FC<ScientificDataTableProps> = ({ observ
                 setSearchQuery(e.target.value);
                 setCurrentPage(1);
               }}
-              className="w-full h-11 pl-9 pr-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary placeholder:text-text-secondary focus:border-accent-cyan focus:outline-none"
+              className="w-full h-11 pl-9 pr-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary placeholder:text-text-secondary focus:border-border-strong focus:outline-none"
             />
           </div>
 
@@ -203,7 +203,7 @@ export const ScientificDataTable: React.FC<ScientificDataTableProps> = ({ observ
                 setStatusFilter(e.target.value as any);
                 setCurrentPage(1);
               }}
-              className="h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-accent-cyan focus:outline-none"
+              className="h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-border-strong focus:outline-none"
             >
               <option value="All">All Statuses</option>
               <option value="Compliant">Compliant Only</option>
@@ -221,7 +221,7 @@ export const ScientificDataTable: React.FC<ScientificDataTableProps> = ({ observ
                 setCategoryFilter(e.target.value);
                 setCurrentPage(1);
               }}
-              className="h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-accent-cyan focus:outline-none"
+              className="h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-border-strong focus:outline-none"
             >
               {uniqueCategories.map((cat) => (
                 <option key={cat} value={cat}>

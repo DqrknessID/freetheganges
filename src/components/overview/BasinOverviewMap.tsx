@@ -76,7 +76,7 @@ export class BasinMapErrorBoundary extends React.Component<
             <button
               type="button"
               onClick={() => this.props.onNavigate('atlas')}
-              className="min-h-[44px] px-5 py-2.5 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-border-strong text-accent-cyan text-xs font-medium flex items-center gap-2 transition-colors cursor-pointer"
+              className="min-h-[44px] px-5 py-2.5 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-border-strong text-text-primary text-xs font-medium flex items-center gap-2 transition-colors cursor-pointer"
             >
               Launch Interactive Atlas
             </button>
@@ -101,25 +101,25 @@ const BasinOverviewMapInner: React.FC<BasinOverviewMapProps> = ({ onNavigate }) 
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, marginBottom: 20, flexWrap: 'wrap' }}>
         <div>
           <h2 className="font-sans text-xl sm:text-2xl font-bold text-white flex items-center gap-2" style={{ margin: 0 }}>
-            <Compass style={{ width: 20, height: 20, color: '#38BDF8', flexShrink: 0 }} />
+            <Compass style={{ width: 20, height: 20, color: '#94A3B8', flexShrink: 0 }} />
             Transboundary Basin Regional Overview
           </h2>
-          <p style={{ margin: '4px 0 0', fontSize: 13, color: '#CBD5E1' }}>
+          <p style={{ margin: '4px 0 0', fontSize: 13, color: '#A1A1AA' }}>
             Ganges-Brahmaputra-Meghna River Network: India & Bangladesh
           </p>
         </div>
 
         {/* Controls: Mode Switcher & Atlas Link */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', backgroundColor: '#0b0c0e', padding: 3, borderRadius: 8, border: '1px solid #182234' }}>
+          <div style={{ display: 'flex', backgroundColor: '#121316', padding: 3, borderRadius: 8, border: '1px solid #22252c' }}>
             <button
               type="button"
               onClick={() => setMapMode('interactive')}
               className="min-h-[44px] px-3 py-2 rounded text-xs font-medium flex items-center gap-1.5 cursor-pointer transition-all"
               style={{
-                backgroundColor: mapMode === 'interactive' ? '#1E3858' : 'transparent',
-                color: mapMode === 'interactive' ? '#38BDF8' : '#94A3B8',
-                border: mapMode === 'interactive' ? '1px solid #38BDF8' : '1px solid transparent',
+                backgroundColor: mapMode === 'interactive' ? '#181a20' : 'transparent',
+                color: mapMode === 'interactive' ? '#f4f4f5' : '#71717a',
+                border: mapMode === 'interactive' ? '1px solid #2c3039' : '1px solid transparent',
               }}
             >
               <Globe style={{ width: 14, height: 14 }} />
@@ -130,9 +130,9 @@ const BasinOverviewMapInner: React.FC<BasinOverviewMapProps> = ({ onNavigate }) 
               onClick={() => setMapMode('schematic')}
               className="min-h-[44px] px-3 py-2 rounded text-xs font-medium flex items-center gap-1.5 cursor-pointer transition-all"
               style={{
-                backgroundColor: mapMode === 'schematic' ? '#1E3858' : 'transparent',
-                color: mapMode === 'schematic' ? '#38BDF8' : '#94A3B8',
-                border: mapMode === 'schematic' ? '1px solid #38BDF8' : '1px solid transparent',
+                backgroundColor: mapMode === 'schematic' ? '#181a20' : 'transparent',
+                color: mapMode === 'schematic' ? '#f4f4f5' : '#71717a',
+                border: mapMode === 'schematic' ? '1px solid #2c3039' : '1px solid transparent',
               }}
             >
               <Layers style={{ width: 14, height: 14 }} />
@@ -143,7 +143,7 @@ const BasinOverviewMapInner: React.FC<BasinOverviewMapProps> = ({ onNavigate }) 
           <button
             type="button"
             onClick={() => onNavigate('atlas')}
-            className="min-h-[44px] px-3.5 py-2 rounded-lg bg-surface-elevated border border-border-strong text-accent-cyan text-xs font-medium flex items-center gap-2 hover:bg-surface-hover hover:border-accent-cyan/40 transition-colors cursor-pointer whitespace-nowrap"
+            className="min-h-[44px] px-3.5 py-2 rounded-lg bg-surface-elevated border border-border-strong text-text-primary text-xs font-medium flex items-center gap-2 hover:bg-surface-hover hover:border-border-strong transition-colors cursor-pointer whitespace-nowrap"
           >
             <Map style={{ width: 14, height: 14 }} />
             Launch Full Interactive Atlas

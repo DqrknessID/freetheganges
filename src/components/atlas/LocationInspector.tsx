@@ -60,7 +60,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
             {hotspot.name}
           </h3>
 
-          <div className="text-xs text-accent-cyan flex items-center gap-1">
+          <div className="text-xs text-text-secondary flex items-center gap-1">
             <MapPin className="w-3.5 h-3.5 shrink-0" />
             <span>{hotspot.city}, {hotspot.state}, {hotspot.country}</span>
           </div>
@@ -71,7 +71,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
 
           {hotspot.dischargeMld && (
             <div className="text-xs text-text-secondary flex items-center gap-1.5 pt-1">
-              <Activity className="w-3.5 h-3.5 text-accent-amber" />
+              <Activity className="w-3.5 h-3.5 text-text-secondary" />
               <span>Estimated Effluent Discharge: <strong className="text-text-primary font-mono">{hotspot.dischargeMld} MLD</strong></span>
             </div>
           )}
@@ -118,7 +118,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
         <div className="pt-3 border-t border-border-subtle space-y-2 text-xs font-mono">
           <div className="flex justify-between text-text-secondary">
             <span>Data Confidence Rating:</span>
-            <span className="text-accent-cyan font-bold">{hotspot.confidenceScore}%</span>
+            <span className="text-text-primary font-bold">{hotspot.confidenceScore}%</span>
           </div>
           <div className="text-[11px] text-text-secondary">
             Attribution: {hotspot.sources.join(', ')}
@@ -143,7 +143,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
               {fac.complianceStatus}
             </span>
             <span className="text-xs font-mono text-text-secondary flex items-center gap-1">
-              <Building2 className="w-3.5 h-3.5 text-accent-amber" />
+              <Building2 className="w-3.5 h-3.5 text-text-secondary" />
               {fac.sector}
             </span>
           </div>
@@ -152,7 +152,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
             {fac.name}
           </h3>
 
-          <div className="text-xs text-accent-cyan flex items-center gap-1">
+          <div className="text-xs text-text-secondary flex items-center gap-1">
             <MapPin className="w-3.5 h-3.5 shrink-0" />
             <span>{fac.clusterName}, {fac.state}, {fac.country}</span>
           </div>
@@ -179,7 +179,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
           </span>
           <div className="flex flex-wrap gap-2">
             {fac.keyChemicals.map((chem, i) => (
-              <span key={i} className="text-[11px] font-mono text-accent-red">
+              <span key={i} className="text-[11px] font-mono text-text-secondary">
                 {chem}
               </span>
             ))}
@@ -190,7 +190,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
         <div className="pt-3 border-t border-border-subtle space-y-2 text-xs font-mono">
           <div className="flex justify-between text-text-secondary">
             <span>Data Confidence Rating:</span>
-            <span className="text-accent-cyan font-bold">{fac.confidenceScore}%</span>
+            <span className="text-text-primary font-bold">{fac.confidenceScore}%</span>
           </div>
           <div className="text-[11px] text-text-secondary">
             Data Source: {fac.dataSource}
@@ -205,7 +205,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
       <div className="space-y-5">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono font-bold uppercase text-accent-cyan">
+            <span className="text-[10px] font-mono font-medium text-text-secondary">
               {station.operatingAgency} Telemetry
             </span>
             <span className="text-xs font-mono text-accent-red font-bold">
@@ -217,7 +217,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
             {station.stationName}
           </h3>
 
-          <div className="text-xs text-accent-cyan flex items-center gap-1">
+          <div className="text-xs text-text-secondary flex items-center gap-1">
             <Droplets className="w-3.5 h-3.5 shrink-0" />
             <span>{station.river} | {station.location}, {station.country}</span>
           </div>
@@ -252,7 +252,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
         <div className="pt-3 border-t border-border-subtle space-y-2 text-xs font-mono">
           <div className="flex justify-between text-text-secondary">
             <span>Data Confidence Rating:</span>
-            <span className="text-accent-cyan font-bold">{station.confidenceScore}%</span>
+            <span className="text-text-primary font-bold">{station.confidenceScore}%</span>
           </div>
         </div>
       </div>
@@ -264,7 +264,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
       <div className="space-y-5">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono font-bold uppercase text-accent-green">
+            <span className="text-[10px] font-mono font-medium text-text-secondary">
               {zone.threatTier} Threat Tier
             </span>
             <span className="text-xs font-mono text-text-secondary">
@@ -276,7 +276,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
             {zone.name}
           </h3>
 
-          <div className="text-xs text-accent-green flex items-center gap-1">
+          <div className="text-xs text-text-secondary flex items-center gap-1">
             <Trees className="w-3.5 h-3.5 shrink-0" />
             <span>{zone.category} | {zone.protectionStatus}</span>
           </div>
@@ -294,7 +294,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
           <div className="space-y-1">
             {zone.keySpecies.map((sp, i) => (
               <div key={i} className="text-xs text-text-primary italic flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-green shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-full bg-border-strong shrink-0" />
                 <span>{sp}</span>
               </div>
             ))}
@@ -309,7 +309,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
           <div className="space-y-1">
             {zone.primaryThreats.map((thr, i) => (
               <div key={i} className="text-xs text-text-secondary flex items-start gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-red shrink-0 mt-1" />
+                <span className="w-1.5 h-1.5 rounded-full bg-border-strong shrink-0 mt-1" />
                 <span>{thr}</span>
               </div>
             ))}
@@ -328,7 +328,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
       <div className="space-y-5">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] font-mono font-bold uppercase text-accent-cyan">
+            <span className="text-[10px] font-mono font-medium text-text-secondary">
               {river.system} System
             </span>
             {river.lengthKm && (
@@ -342,7 +342,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
             {river.name}
           </h3>
 
-          <div className="text-xs font-mono text-accent-cyan flex items-center gap-1">
+          <div className="text-xs font-mono text-text-secondary flex items-center gap-1">
             <Compass className="w-3.5 h-3.5 shrink-0" />
             <span>Hydrographic Vector Geometry</span>
           </div>

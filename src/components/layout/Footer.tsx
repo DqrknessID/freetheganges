@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology })
               <span className="font-sans text-sm font-bold tracking-normal text-text-primary">
                 Free the Ganges Consortium
               </span>
-              <span className="text-[10px] text-accent-cyan font-semibold">
+              <span className="text-[10px] text-text-secondary font-mono font-medium">
                 Independent Monitor
               </span>
             </div>
@@ -27,9 +27,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology })
               Independent environmental intelligence and scientific research platform monitoring transboundary 
               ecological degradation throughout the Ganges-Brahmaputra-Meghna (GBM) river basin across India and Bangladesh.
             </p>
-            <div className="pt-1 flex items-center gap-2 text-[11px] text-accent-cyan">
-              <Globe className="w-3.5 h-3.5" />
-              <span>Spatial Envelope: <span className="font-mono">20°N to 32°N, 73°E to 98°E</span></span>
+            <div className="pt-1 flex items-center gap-2 text-[11px] text-text-secondary font-mono">
+              <Globe className="w-3.5 h-3.5 text-text-secondary" />
+              <span>Spatial Envelope: 20°N to 32°N, 73°E to 98°E</span>
             </div>
           </div>
 
@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology })
                 <button
                   type="button"
                   onClick={() => onNavigate('overview')}
-                  className="min-h-[44px] flex items-center hover:text-accent-cyan transition-colors"
+                  className="min-h-[44px] flex items-center hover:text-text-primary transition-colors"
                 >
                   Regional Intelligence Dashboard
                 </button>
@@ -52,7 +52,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology })
                 <button
                   type="button"
                   onClick={() => onNavigate('atlas')}
-                  className="min-h-[44px] flex items-center hover:text-accent-cyan transition-colors"
+                  className="min-h-[44px] flex items-center hover:text-text-primary transition-colors"
                 >
                   Interactive Atlas
                 </button>
@@ -61,7 +61,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology })
                 <button
                   type="button"
                   onClick={() => onNavigate('indicators')}
-                  className="min-h-[44px] flex items-center hover:text-accent-cyan transition-colors"
+                  className="min-h-[44px] flex items-center hover:text-text-primary transition-colors"
                 >
                   Environmental Indicators & Data
                 </button>
@@ -70,7 +70,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology })
                 <button
                   type="button"
                   onClick={() => onNavigate('research')}
-                  className="min-h-[44px] flex items-center hover:text-accent-cyan transition-colors"
+                  className="min-h-[44px] flex items-center hover:text-text-primary transition-colors"
                 >
                   Research Reports & Source Registry
                 </button>
@@ -79,7 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology })
                 <button
                   type="button"
                   onClick={() => onNavigate('about')}
-                  className="min-h-[44px] flex items-center hover:text-accent-cyan transition-colors"
+                  className="min-h-[44px] flex items-center hover:text-text-primary transition-colors"
                 >
                   Watchdog Charter & Mission
                 </button>
@@ -92,29 +92,29 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology })
             <h4 className="text-xs font-semibold text-text-primary">
               Verified Data Providers
             </h4>
-            <ul className="space-y-1.5 text-text-secondary text-xs">
+            <ul className="space-y-1.5 text-text-secondary text-xs font-mono">
               <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-green" />
+                <span className="w-1.5 h-1.5 rounded-full bg-border-strong" />
                 <span>CPCB (Central Pollution Control Board, India)</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-green" />
+                <span className="w-1.5 h-1.5 rounded-full bg-border-strong" />
                 <span>BWDB (Bangladesh Water Development Board)</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-green" />
+                <span className="w-1.5 h-1.5 rounded-full bg-border-strong" />
                 <span>DoE (Department of Environment, Bangladesh)</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" />
+                <span className="w-1.5 h-1.5 rounded-full bg-border-strong" />
                 <span>Copernicus Sentinel-2 & Sentinel-5P</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-cyan" />
+                <span className="w-1.5 h-1.5 rounded-full bg-border-strong" />
                 <span>NASA Earth Observing System (MODIS/Landsat)</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent-amber" />
+                <span className="w-1.5 h-1.5 rounded-full bg-border-strong" />
                 <span>WHO Guidelines for Drinking-water Quality</span>
               </li>
             </ul>
@@ -133,9 +133,9 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology })
               <button
                 type="button"
                 onClick={onOpenMethodology}
-                className="min-h-[44px] px-3.5 py-2 rounded bg-surface border border-border-subtle hover:border-accent-cyan/40 hover:text-text-primary text-xs flex items-center gap-2 transition-colors"
+                className="min-h-[44px] px-3.5 py-2 rounded bg-surface border border-border-subtle hover:border-border-strong hover:text-text-primary text-xs flex items-center gap-2 transition-colors"
               >
-                <ShieldCheck className="w-4 h-4 text-accent-cyan" />
+                <ShieldCheck className="w-4 h-4 text-text-secondary" />
                 <span>Open Methodology Disclosure</span>
               </button>
             </div>
@@ -149,8 +149,8 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology })
             &copy; 2026 Free the Ganges Research Consortium. All rights reserved.
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-accent-green flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-accent-green" />
+            <span className="text-text-secondary flex items-center gap-1.5 font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
               Basin Telemetry Engine: Operational
             </span>
             <span className="font-mono text-[10px]">Version 1.0.0-RC1</span>

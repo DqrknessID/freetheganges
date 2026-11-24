@@ -72,19 +72,17 @@ export const Header: React.FC<HeaderProps> = ({
               className="flex items-center gap-2.5 text-left group min-h-[44px] min-w-[44px] py-1"
               aria-label="Free the Ganges Home"
             >
-              <div className="w-9 h-9 rounded bg-accent-cyan/10 border border-accent-cyan/40 flex items-center justify-center text-accent-cyan group-hover:border-accent-cyan transition-colors">
-                <Droplet className="w-5 h-5 fill-accent-cyan/20 text-accent-cyan" />
+              <div className="w-8 h-8 rounded-md bg-surface-elevated border border-border-subtle flex items-center justify-center text-text-primary group-hover:border-border-strong transition-colors">
+                <Droplet className="w-4 h-4 text-text-primary" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-sans text-lg font-bold text-text-primary group-hover:text-accent-cyan transition-colors">
+                  <span className="font-sans text-base font-semibold text-text-primary">
                     FREE THE GANGES
                   </span>
-                  <span className="hidden xl:inline-block text-[10px] font-sans font-medium text-accent-cyan">
-                    GBM BASIN MONITOR
-                  </span>
+                  <span className="sr-only">GBM BASIN MONITOR</span>
                 </div>
-                <p className="text-[11px] text-text-secondary font-sans hidden sm:block">
+                <p className="text-[11px] text-text-muted font-sans hidden sm:block">
                   Transboundary Environmental Intelligence Platform
                 </p>
               </div>
@@ -101,19 +99,16 @@ export const Header: React.FC<HeaderProps> = ({
                   type="button"
                   onClick={() => handleNavClick(item.id)}
                   aria-current={isActive ? 'page' : undefined}
-                  className={`min-h-[44px] px-3.5 py-2 rounded-md text-xs font-medium tracking-wide flex items-center gap-2 transition-all relative ${
+                  className={`min-h-[44px] px-3.5 py-2 rounded-md text-xs font-medium tracking-normal flex items-center gap-2 transition-all ${
                     isActive
-                      ? 'text-accent-cyan bg-surface-elevated border border-accent-cyan/30 shadow-sm'
+                      ? 'text-text-primary bg-surface-elevated border border-border-subtle shadow-sm'
                       : 'text-text-secondary hover:text-text-primary hover:bg-surface-hover'
                   }`}
                 >
-                  <span className={isActive ? 'text-accent-cyan' : 'text-text-secondary'}>
+                  <span className={isActive ? 'text-text-primary' : 'text-text-muted'}>
                     {getNavIcon(item.id)}
                   </span>
                   <span>{item.label}</span>
-                  {isActive && (
-                    <span className="absolute bottom-0 left-2 right-2 h-0.5 bg-accent-cyan rounded-full" />
-                  )}
                 </button>
               );
             })}
@@ -139,7 +134,7 @@ export const Header: React.FC<HeaderProps> = ({
                 placeholder="Search basin, hotspot, or parameter..."
                 className={`w-full h-9 pl-8 pr-3 bg-base border text-xs text-text-primary rounded placeholder:text-text-secondary font-mono transition-all ${
                   searchFocused 
-                    ? 'border-accent-cyan ring-1 ring-accent-cyan/30 bg-surface-elevated' 
+                    ? 'border-border-strong bg-surface-elevated' 
                     : 'border-border-subtle hover:border-border-strong'
                 }`}
               />
@@ -149,11 +144,11 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={onOpenMethodology}
-              className="min-h-[44px] px-3 py-2 rounded border border-border-subtle bg-surface-elevated hover:bg-surface-hover hover:border-accent-cyan/40 text-text-primary text-xs font-mono flex items-center gap-2 transition-all"
+              className="min-h-[44px] px-3 py-2 rounded border border-border-subtle bg-surface-elevated hover:bg-surface-hover hover:border-border-strong text-text-primary text-xs font-mono flex items-center gap-2 transition-all"
               title="Inspect scientific methodology and sensor validation protocol"
               aria-label="Open scientific methodology and sensor validation protocol"
             >
-              <ShieldCheck className="w-4 h-4 text-accent-cyan" />
+              <ShieldCheck className="w-4 h-4 text-text-secondary" />
               <span className="hidden sm:inline">Methodology</span>
             </button>
 
@@ -185,7 +180,7 @@ export const Header: React.FC<HeaderProps> = ({
               value={searchQuery}
               onChange={(e) => onSearchChange(e.target.value)}
               placeholder="Search basin, hotspot, or parameter..."
-              className="w-full h-11 pl-9 pr-3 bg-base border border-border-subtle text-xs text-text-primary rounded font-mono placeholder:text-text-secondary focus:border-accent-cyan focus:outline-none"
+              className="w-full h-11 pl-9 pr-3 bg-base border border-border-subtle text-xs text-text-primary rounded font-mono placeholder:text-text-secondary focus:border-border-strong focus:outline-none"
             />
           </div>
 
@@ -201,11 +196,11 @@ export const Header: React.FC<HeaderProps> = ({
                   aria-current={isActive ? 'page' : undefined}
                   className={`w-full min-h-[44px] px-3 py-2.5 rounded text-left text-xs font-medium flex items-center gap-3 transition-colors ${
                     isActive
-                      ? 'text-accent-cyan bg-surface border border-accent-cyan/30'
+                      ? 'text-text-primary bg-surface border border-border-strong font-semibold'
                       : 'text-text-secondary hover:text-text-primary hover:bg-surface'
                   }`}
                 >
-                  <span className={isActive ? 'text-accent-cyan' : 'text-text-secondary'}>
+                  <span className={isActive ? 'text-text-primary' : 'text-text-secondary'}>
                     {getNavIcon(item.id)}
                   </span>
                   <div>

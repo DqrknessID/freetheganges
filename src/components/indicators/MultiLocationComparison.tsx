@@ -110,14 +110,14 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
             htmlFor="primary-station-select"
             className="text-xs font-semibold text-text-secondary flex items-center gap-1.5"
           >
-            <MapPin className="w-3.5 h-3.5 text-accent-cyan" />
+            <MapPin className="w-3.5 h-3.5 text-text-secondary" />
             Primary Location (Series A)
           </label>
           <select
             id="primary-station-select"
             value={primaryStation}
             onChange={(e) => onSelectPrimary(e.target.value)}
-            className="w-full h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-accent-cyan focus:outline-none"
+            className="w-full h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-border-strong focus:outline-none"
           >
             {monitoringStations.map((station) => (
               <option key={`prim_${station.id}`} value={station.selectValue}>
@@ -133,14 +133,14 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
             htmlFor="secondary-station-select"
             className="text-xs font-semibold text-text-secondary flex items-center gap-1.5"
           >
-            <ArrowRightLeft className="w-3.5 h-3.5 text-accent-green" />
+            <ArrowRightLeft className="w-3.5 h-3.5 text-text-secondary" />
             Comparison Location (Series B)
           </label>
           <select
             id="secondary-station-select"
             value={secondaryStation}
             onChange={(e) => onSelectSecondary(e.target.value)}
-            className="w-full h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-accent-green focus:outline-none"
+            className="w-full h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-border-strong focus:outline-none"
           >
             {monitoringStations.map((station) => (
               <option key={`sec_${station.id}`} value={station.selectValue}>
@@ -153,7 +153,7 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
         {/* Standard Threshold Selector */}
         <div className="space-y-1.5">
           <label className="text-xs font-semibold text-text-secondary flex items-center gap-1.5">
-            <ShieldAlert className="w-3.5 h-3.5 text-accent-amber" />
+            <ShieldAlert className="w-3.5 h-3.5 text-text-secondary" />
             Statutory Threshold Standard
           </label>
           <div className="grid grid-cols-3 gap-2">
@@ -164,7 +164,7 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
                 onClick={() => onSelectStandard(std)}
                 className={`min-h-[44px] rounded-lg text-xs font-medium border transition-colors ${
                   selectedStandard === std
-                    ? 'bg-accent-amber/20 border-accent-amber text-accent-amber font-bold'
+                    ? 'bg-surface-elevated border-border-strong text-accent-amber font-bold shadow-sm'
                     : 'bg-base border-border-subtle text-text-secondary hover:text-text-primary'
                 }`}
               >
@@ -179,7 +179,7 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
       <div className="bg-surface border border-border-subtle rounded-xl p-4 sm:p-6 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-border-subtle">
           <div>
-            <span className="text-xs font-semibold text-accent-cyan">
+            <span className="text-xs font-semibold text-text-secondary">
               Selected Parameter Evaluation
             </span>
             <h2 className="text-xl sm:text-2xl font-sans font-bold text-white">
@@ -187,7 +187,7 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
             </h2>
             <p className="text-xs text-text-secondary mt-1">
               Active Benchmark Standard ({selectedStandard}):{' '}
-              <span className="text-accent-amber font-semibold font-mono">
+              <span className="text-text-primary font-semibold font-mono">
                 {activeDisplayLimit} {currentParam.unit}
               </span>
             </p>
@@ -257,11 +257,11 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
         </div>
 
         {/* Elevated Transboundary Variance Banner Block */}
-        <div className="p-4 sm:p-5 rounded-lg bg-surface-elevated border-l-4 border-l-accent-cyan border border-border-strong flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-4 sm:p-5 rounded-lg bg-surface-elevated border border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-xs font-mono">
               <span className="text-text-secondary font-medium">Transboundary Variance</span>
-              <span className="text-accent-cyan font-bold px-1.5 py-0.5 rounded bg-accent-cyan/10 border border-accent-cyan/30 text-[10px]">
+              <span className="text-text-secondary font-medium px-1.5 py-0.5 rounded bg-surface border border-border-subtle text-[10px]">
                 Delta (A - B)
               </span>
             </div>
@@ -270,11 +270,11 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
             </p>
           </div>
 
-          <div className="text-2xl sm:text-3xl font-bold font-mono text-accent-cyan flex items-center gap-2 shrink-0">
+          <div className="text-2xl sm:text-3xl font-bold font-mono text-text-primary flex items-center gap-2 shrink-0">
             {deltaResult.delta !== null && deltaResult.delta > 0 ? (
-              <ArrowUpRight className="w-6 h-6 text-accent-cyan" />
+              <ArrowUpRight className="w-6 h-6 text-text-secondary" />
             ) : deltaResult.delta !== null && deltaResult.delta < 0 ? (
-              <ArrowDownRight className="w-6 h-6 text-accent-green" />
+              <ArrowDownRight className="w-6 h-6 text-emerald-400" />
             ) : null}
             <span>{deltaResult.displayDelta}</span>
             <span className="text-xs text-text-secondary font-normal font-sans">{currentParam.unit}</span>

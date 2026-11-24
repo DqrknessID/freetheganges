@@ -45,6 +45,10 @@ export const App: React.FC = () => {
     }
   };
 
+  const handleSelectAlert = () => {
+    setActiveView('atlas');
+  };
+
   const renderActiveView = () => {
     switch (activeView) {
       case 'overview':
@@ -78,11 +82,13 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-base text-text-primary flex flex-col font-sans selection:bg-accent-cyan/20 selection:text-accent-cyan">
-      {/* 1. Breaking Intelligence Wire / Alert Ticker */}
-      <AlertTicker onSelectAlert={() => setActiveView('atlas')} />
+    <div className="min-h-screen bg-base text-text-primary flex flex-col font-sans selection:bg-surface-elevated selection:text-white">
+      {/* Telemetry alert channel: accessible for assistive tools and telemetry subscriptions */}
+      <div className="sr-only">
+        <AlertTicker onSelectAlert={handleSelectAlert} />
+      </div>
 
-      {/* 2. Institutional Header */}
+      {/* 1. Institutional Header */}
       <Header
         activeView={activeView}
         onNavigate={setActiveView}

@@ -23,9 +23,9 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
               type="button"
               aria-pressed={isActive}
               onClick={() => onSelectCategory(category)}
-              className={`min-h-[44px] px-4 py-2 rounded-lg text-xs font-medium transition-all focus:outline-none focus:ring-1 focus:ring-accent-cyan ${
+              className={`min-h-[44px] px-4 py-2 rounded-lg text-xs font-medium transition-all focus:outline-none focus:ring-1 focus:ring-border-strong ${
                 isActive
-                  ? 'bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/40 shadow-sm font-semibold'
+                  ? 'bg-surface-elevated text-text-primary border border-border-strong shadow-sm font-semibold'
                   : 'text-text-secondary hover:text-text-primary hover:bg-surface-elevated border border-transparent'
               }`}
             >

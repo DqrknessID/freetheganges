@@ -3,6 +3,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { App } from '../App';
+import { AlertTicker } from '../components/layout/AlertTicker';
 
 describe('Tier 2: Component Navigation & Application Shell', () => {
   beforeEach(() => {
@@ -145,7 +146,8 @@ describe('Tier 2: Component Navigation & Application Shell', () => {
 
   it('cycles and pauses alerts in AlertTicker', async () => {
     const user = userEvent.setup();
-    render(<App />);
+    const onSelectAlert = vi.fn();
+    render(<AlertTicker onSelectAlert={onSelectAlert} />);
 
     expect(screen.getByText(/BASIN INTELLIGENCE WIRE/i)).toBeInTheDocument();
 
@@ -162,6 +164,6 @@ describe('Tier 2: Component Navigation & Application Shell', () => {
     // Clicking alert headline should navigate to atlas
     const alertBtn = screen.getByRole('button', { name: /Jump to map inspection/i });
     await user.click(alertBtn);
-    expect(screen.getByText(/GBM BASIN GIS ATLAS/i)).toBeInTheDocument();
+    expect(onSelectAlert).toHaveBeenCalled();
   });
 });

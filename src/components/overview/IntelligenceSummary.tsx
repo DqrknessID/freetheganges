@@ -17,10 +17,10 @@ export const IntelligenceSummary: React.FC<IntelligenceSummaryProps> = ({ onNavi
       <div className="intel-card lg:col-span-2 bg-surface border border-border-subtle rounded-xl p-8 sm:p-10 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <h3 className="text-base sm:text-lg font-sans font-bold text-white flex items-center gap-2">
-            <Flame className="w-4 h-4 text-accent-amber" />
+            <Flame className="w-4 h-4 text-text-secondary" />
             Regional Intelligence Dossier: Seasonal Hydrological Stagnation
           </h3>
-          <span className="text-[11px] font-mono text-text-secondary self-start sm:self-auto">
+          <span className="text-[11px] font-mono text-text-muted self-start sm:self-auto">
             Dossier Ref: GBM-INTEL-2026-11
           </span>
         </div>
@@ -34,10 +34,10 @@ export const IntelligenceSummary: React.FC<IntelligenceSummaryProps> = ({ onNavi
         </p>
 
         {/* Actionable Watchlist Points */}
-        <div className="p-4 rounded-lg bg-surface-elevated border border-border-subtle space-y-2.5">
+        <div className="p-5 rounded-lg bg-surface-elevated border border-border-subtle space-y-3">
           <div className="flex items-center gap-2">
-            <AlertTriangle className="w-3.5 h-3.5 text-accent-amber" />
-            <h4 className="text-xs font-semibold text-accent-cyan">
+            <AlertTriangle className="w-3.5 h-3.5 text-text-muted" />
+            <h4 className="text-xs font-semibold text-text-primary">
               Acute watchlist developments:
             </h4>
           </div>
@@ -61,10 +61,10 @@ export const IntelligenceSummary: React.FC<IntelligenceSummaryProps> = ({ onNavi
           <button
             type="button"
             onClick={() => onNavigate('atlas')}
-            className="min-h-[44px] px-4 py-2 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-border-subtle hover:border-accent-cyan/40 text-xs font-medium text-accent-cyan flex items-center gap-2 transition-colors"
+            className="min-h-[44px] px-4 py-2 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-border-subtle hover:border-border-strong text-xs font-medium text-text-primary flex items-center gap-2 transition-colors"
           >
             <span>Inspect Affected Atlas Reaches</span>
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-text-muted" />
           </button>
 
           <button
@@ -82,13 +82,13 @@ export const IntelligenceSummary: React.FC<IntelligenceSummaryProps> = ({ onNavi
       <div className="intel-card bg-surface border border-border-subtle rounded-xl p-6 space-y-4 flex flex-col justify-between">
         <div className="space-y-3">
           <div className="flex items-center gap-2">
-            <FileText className="w-4 h-4 text-accent-cyan" />
+            <FileText className="w-4 h-4 text-text-secondary" />
             <h3 className="text-base font-sans font-bold text-white">
               Featured Research Assessment
             </h3>
           </div>
 
-          <span className="text-[11px] font-medium text-accent-cyan block">
+          <span className="text-[11px] font-mono font-medium text-text-secondary block">
             Scientific Assessment 2026
           </span>
 
@@ -102,7 +102,7 @@ export const IntelligenceSummary: React.FC<IntelligenceSummaryProps> = ({ onNavi
             impacts and agricultural bioaccumulation.
           </p>
 
-          <div className="text-[11px] text-accent-green">
+          <div className="text-[11px] text-text-secondary font-mono">
             Lead: Dr. A. K. Sengupta (Jadavpur University & BUET Consortium)
           </div>
         </div>
@@ -110,10 +110,10 @@ export const IntelligenceSummary: React.FC<IntelligenceSummaryProps> = ({ onNavi
         <button
           type="button"
           onClick={() => onNavigate('research')}
-          className="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-border-subtle hover:border-accent-cyan/40 text-xs font-medium text-text-primary flex items-center justify-center gap-2 transition-colors"
+          className="w-full min-h-[44px] px-4 py-2.5 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-border-subtle hover:border-border-strong text-xs font-medium text-text-primary flex items-center justify-center gap-2 transition-colors"
         >
           <span>View All Research & Reports</span>
-          <ChevronRight className="w-4 h-4 text-accent-cyan" />
+          <ChevronRight className="w-4 h-4 text-text-secondary" />
         </button>
       </div>
 

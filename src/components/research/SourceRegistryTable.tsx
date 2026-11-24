@@ -46,7 +46,7 @@ export const SourceRegistryTable: React.FC<SourceRegistryTableProps> = ({ source
       <div className="bg-surface border border-border-subtle rounded-xl p-6 space-y-5">
         <div>
           <h2 className="font-sans text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
-            <Database className="w-5 h-5 text-accent-cyan" />
+            <Database className="w-5 h-5 text-text-secondary" />
             Comprehensive Environmental Dataset Registry
           </h2>
           <p className="text-xs sm:text-sm text-text-secondary mt-1 leading-relaxed">
@@ -67,19 +67,19 @@ export const SourceRegistryTable: React.FC<SourceRegistryTableProps> = ({ source
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search datasets, providers, parameters..."
-              className="w-full h-11 pl-9 pr-3 bg-base border border-border-subtle rounded-lg text-xs sm:text-sm text-text-primary placeholder:text-text-secondary focus:border-accent-cyan focus:outline-none"
+              className="w-full h-11 pl-9 pr-3 bg-base border border-border-subtle rounded-lg text-xs sm:text-sm text-text-primary placeholder:text-text-secondary focus:border-border-strong focus:outline-none"
             />
           </div>
 
           {/* Provider and Provenance Filter Selectors */}
           <div className="flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-1.5 text-xs text-text-secondary">
-              <Filter className="w-3.5 h-3.5 text-accent-cyan" />
+              <Filter className="w-3.5 h-3.5 text-text-secondary" />
               <span>Provider:</span>
               <select
                 value={selectedProvider}
                 onChange={(e) => setSelectedProvider(e.target.value)}
-                className="h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-accent-cyan focus:outline-none"
+                className="h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-border-strong focus:outline-none"
                 aria-label="Filter by provider"
               >
                 {providers.map((p) => (
@@ -93,7 +93,7 @@ export const SourceRegistryTable: React.FC<SourceRegistryTableProps> = ({ source
               <select
                 value={selectedProvenance}
                 onChange={(e) => setSelectedProvenance(e.target.value)}
-                className="h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-accent-cyan focus:outline-none"
+                className="h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-border-strong focus:outline-none"
                 aria-label="Filter by provenance"
               >
                 {provenanceOptions.map((opt) => (
@@ -109,7 +109,7 @@ export const SourceRegistryTable: React.FC<SourceRegistryTableProps> = ({ source
               <select
                 value={selectedTier}
                 onChange={(e) => setSelectedTier(e.target.value)}
-                className="h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-accent-cyan focus:outline-none"
+                className="h-11 px-3 bg-base border border-border-subtle rounded-lg text-xs text-text-primary focus:border-border-strong focus:outline-none"
                 aria-label="Filter by tier"
               >
                 {tiers.map((t) => (
@@ -152,7 +152,7 @@ export const SourceRegistryTable: React.FC<SourceRegistryTableProps> = ({ source
                       </div>
                       <div className="text-[11px] text-text-secondary flex items-center gap-1.5">
                         <span>{source.provider}</span>
-                        <span className="px-1.5 py-0.2 rounded bg-base text-accent-cyan border border-border-subtle text-[10px]">
+                        <span className="px-1.5 py-0.5 rounded bg-surface-elevated text-text-secondary border border-border-subtle font-mono text-[10px]">
                           {source.providerShortCode}
                         </span>
                       </div>
@@ -161,23 +161,17 @@ export const SourceRegistryTable: React.FC<SourceRegistryTableProps> = ({ source
                           href={source.sourceUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="min-h-[44px] inline-flex items-center gap-1 text-[11px] text-accent-cyan hover:underline pt-0.5"
+                          className="min-h-[44px] inline-flex items-center gap-1 text-[11px] text-text-primary hover:underline pt-0.5"
                         >
                           <span>Official Portal</span>
-                          <ExternalLink className="w-3 h-3" />
+                          <ExternalLink className="w-3 h-3 text-text-secondary" />
                         </a>
                       )}
                     </td>
 
                     <td className="p-3">
                       {source.provenanceTier ? (
-                        <span className={`inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-semibold border ${
-                          source.provenanceTier === 'Tier 1'
-                            ? 'bg-accent-green/20 text-accent-green border-accent-green/40'
-                            : source.provenanceTier === 'Tier 2'
-                            ? 'bg-accent-cyan/20 text-accent-cyan border-accent-cyan/40'
-                            : 'bg-accent-amber/20 text-accent-amber border-accent-amber/40'
-                        }`}>
+                        <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium border bg-surface-elevated text-text-secondary border-border-subtle">
                           {source.provenanceTier}
                         </span>
                       ) : (
@@ -198,7 +192,7 @@ export const SourceRegistryTable: React.FC<SourceRegistryTableProps> = ({ source
                       <div className="flex flex-wrap gap-1 max-w-xs">
                         {source.parametersCovered && source.parametersCovered.length > 0 ? (
                           source.parametersCovered.map((param, i) => (
-                            <span key={i} className="px-1.5 py-0.2 rounded bg-base text-text-secondary border border-border-subtle text-[10px]">
+                            <span key={i} className="px-1.5 py-0.5 rounded bg-surface-elevated text-text-secondary border border-border-subtle text-[10px] font-mono">
                               {param}
                             </span>
                           ))
@@ -213,11 +207,11 @@ export const SourceRegistryTable: React.FC<SourceRegistryTableProps> = ({ source
                     </td>
 
                     <td className="p-3 space-y-1 text-[11px]">
-                      <div className="text-accent-green font-semibold">
+                      <div className="text-text-secondary font-medium">
                         Verified {source.verificationDate || 'N/D'}
                       </div>
                       <div>
-                        Rating: <span className="text-text-primary font-bold">{source.confidenceRating || 'N/D'}</span>
+                        Rating: <span className="text-text-primary font-bold font-mono">{source.confidenceRating || 'N/D'}</span>
                       </div>
                       {source.licenseOrTerms && (
                         <div className="text-[10px] text-text-secondary truncate max-w-[160px]" title={source.licenseOrTerms}>
@@ -235,7 +229,7 @@ export const SourceRegistryTable: React.FC<SourceRegistryTableProps> = ({ source
         {/* Audit Statement Footer */}
         <div className="p-3.5 rounded-lg bg-surface-elevated border border-border-subtle text-xs text-text-secondary flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <span>Scientific Data Protocol: No fabricated telemetry permitted. Missing records displayed as N/D.</span>
-          <span className="text-accent-cyan font-semibold">
+          <span className="text-text-primary font-mono font-medium">
             {filteredSources.length} Authoritative Sources Active
           </span>
         </div>

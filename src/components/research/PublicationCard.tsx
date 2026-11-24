@@ -33,18 +33,18 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication: p
   };
 
   return (
-    <article className="bg-surface border border-border-subtle rounded-xl p-6 space-y-4 hover:border-accent-cyan/40 transition-colors">
+    <article className="bg-surface border border-border-subtle rounded-xl p-6 space-y-4 hover:border-border-strong transition-colors">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-[11px] font-medium text-accent-cyan">
+          <span className="text-[11px] font-mono font-medium text-text-secondary">
             {pub.category}
           </span>
           <span className="text-xs text-text-secondary">
             Published: {pub.publishedDate}
           </span>
         </div>
-        <span className="text-xs text-text-secondary">
-          Confidence: <span className="text-accent-green font-semibold">{pub.confidenceLevel}</span>
+        <span className="text-xs text-text-secondary font-mono">
+          Confidence: <span className="text-text-primary font-semibold">{pub.confidenceLevel}</span>
         </span>
       </div>
 
@@ -56,8 +56,8 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication: p
         Authors: <span className="text-text-primary">{pub.authors.join(', ')}</span> | {pub.affiliation}
       </div>
 
-      <div className="text-xs text-accent-cyan flex items-center gap-1.5">
-        <Globe className="w-3.5 h-3.5" />
+      <div className="text-xs text-text-secondary flex items-center gap-1.5 font-mono">
+        <Globe className="w-3.5 h-3.5 text-text-secondary" />
         <span>Geographic Scope: {pub.geographicScope}</span>
       </div>
 
@@ -84,7 +84,7 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication: p
       <div className="pt-2 border-t border-border-subtle flex flex-wrap items-center justify-between gap-3 text-xs">
         <div className="flex flex-wrap items-center gap-2">
           {pub.tags.map((tag) => (
-            <span key={tag} className="text-[11px] text-text-secondary">
+            <span key={tag} className="text-[11px] text-text-secondary font-mono">
               #{tag}
             </span>
           ))}
@@ -95,9 +95,9 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication: p
             type="button"
             onClick={handleDownload}
             aria-label={`Download research brief for ${pub.title}`}
-            className="min-h-[44px] px-3.5 py-1.5 rounded bg-surface-elevated hover:bg-surface-hover border border-border-subtle text-text-primary hover:text-accent-cyan text-xs font-medium flex items-center gap-1.5 transition-colors"
+            className="min-h-[44px] px-3.5 py-1.5 rounded bg-surface-elevated hover:bg-surface-hover border border-border-subtle text-text-primary text-xs font-medium flex items-center gap-1.5 transition-colors"
           >
-            <Download className="w-3.5 h-3.5" />
+            <Download className="w-3.5 h-3.5 text-text-secondary" />
             <span>Download Brief</span>
           </button>
 
@@ -105,10 +105,10 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication: p
             href={pub.doiOrReference}
             target="_blank"
             rel="noopener noreferrer"
-            className="min-h-[44px] px-3 flex items-center gap-1.5 text-accent-cyan hover:underline text-xs font-medium"
+            className="min-h-[44px] px-3 flex items-center gap-1.5 text-text-primary hover:underline text-xs font-medium"
           >
             <span>Inspect Publication Reference</span>
-            <ExternalLink className="w-3.5 h-3.5" />
+            <ExternalLink className="w-3.5 h-3.5 text-text-secondary" />
           </a>
         </div>
       </div>

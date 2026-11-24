@@ -73,17 +73,17 @@ export const TimeSeriesChart: React.FC<TimeSeriesChartProps> = ({
       {/* Chart Top Metadata Bar */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-text-secondary border-b border-border-subtle pb-3">
         <div className="flex flex-wrap items-center gap-4">
-          <span className="flex items-center gap-1.5 text-accent-cyan font-semibold">
-            <span className="w-3 h-0.5 bg-accent-cyan" />
+          <span className="flex items-center gap-1.5 text-text-primary font-medium">
+            <span className="w-3 h-0.5 bg-[#48B8D0]" />
             <span>{primaryStation}</span>
           </span>
-          <span className="flex items-center gap-1.5 text-accent-green font-semibold">
-            <span className="w-3 h-0.5 bg-accent-green" />
+          <span className="flex items-center gap-1.5 text-text-primary font-medium">
+            <span className="w-3 h-0.5 bg-[#64B88A]" />
             <span>{secondaryStation}</span>
           </span>
           {thresholdLimit !== undefined && (
-            <span className="flex items-center gap-1.5 text-accent-amber">
-              <span className="w-3 h-0.5 border-t border-dashed border-accent-amber" />
+            <span className="flex items-center gap-1.5 text-text-secondary">
+              <span className="w-3 h-0.5 border-t border-dashed border-[#E7AE55]" />
               <span>{selectedStandard} Regulatory Threshold ({thresholdLimit} {unit})</span>
             </span>
           )}
@@ -97,8 +97,8 @@ export const TimeSeriesChart: React.FC<TimeSeriesChartProps> = ({
       <div className="flex items-center justify-between">
         <div className="text-sm font-semibold text-text-primary font-sans flex items-center gap-2">
           <span>Recharts Time-Series Engine Container</span>
-          <span className="text-xs font-medium bg-accent-cyan/10 text-accent-cyan px-2 py-0.5 rounded border border-accent-cyan/20">
-            Interactive Dual Plot
+          <span className="text-xs font-mono font-medium bg-surface-elevated text-text-secondary px-2 py-0.5 rounded border border-border-subtle">
+            Dual Plot
           </span>
         </div>
         <span className="text-xs text-text-secondary">
@@ -186,7 +186,7 @@ export const TimeSeriesChart: React.FC<TimeSeriesChartProps> = ({
         <span>Jan 2023</span>
         <span className="hidden sm:inline">Jan 2024</span>
         <span>Jan 2025</span>
-        <span className="text-accent-cyan font-semibold">Nov 2026 (Latest Telemetry)</span>
+        <span className="text-text-primary font-medium">Nov 2026 (Latest Telemetry)</span>
       </div>
     </div>
   );

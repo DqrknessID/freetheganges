@@ -12,8 +12,8 @@ export const MapLegend: React.FC = () => {
         aria-label="Toggle Legend"
         className="w-full min-h-[44px] px-3 py-2 flex items-center justify-between text-text-primary hover:bg-surface-elevated transition-colors"
       >
-        <span className="flex items-center gap-1.5 font-semibold text-accent-cyan text-xs">
-          <Layers className="w-3.5 h-3.5 text-accent-cyan" />
+        <span className="flex items-center gap-1.5 font-semibold text-text-primary text-xs">
+          <Layers className="w-3.5 h-3.5 text-text-secondary" />
           Map Legend
         </span>
         {isOpen ? (
@@ -72,11 +72,11 @@ export const MapLegend: React.FC = () => {
           <div className="space-y-1">
             <span className="text-[11px] font-medium text-text-secondary">Monitoring &amp; Eco-Zones</span>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-accent-cyan" />
+              <span className="w-2 h-2 rounded-full bg-[#38BDF8]" />
               <span className="text-text-secondary">Water Quality Station</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full border border-accent-green bg-accent-green/20" />
+              <span className="w-2.5 h-2.5 rounded-full border border-emerald-500 bg-emerald-500/20" />
               <span className="text-text-secondary">Ecological Sanctuary / Ramsar Site</span>
             </div>
           </div>

@@ -70,9 +70,9 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
       {/* Top Atlas Sub-bar */}
       <div className="h-12 bg-surface border-b border-border-subtle px-4 flex items-center justify-between text-xs text-text-secondary shrink-0 z-20">
         <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1.5 text-accent-cyan font-semibold">
-            <Compass className="w-4 h-4 text-accent-cyan" />
-            <span className="font-sans text-sm tracking-normal text-white">GBM Basin GIS Atlas</span>
+          <span className="flex items-center gap-1.5 font-medium text-text-primary">
+            <Compass className="w-4 h-4 text-text-secondary" />
+            <span className="font-sans text-sm tracking-normal text-text-primary">GBM Basin GIS Atlas</span>
           </span>
           <span className="hidden md:inline text-border-strong">|</span>
           <span className="hidden md:inline text-text-secondary">
@@ -81,8 +81,8 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
         </div>
 
         <div className="flex items-center gap-4">
-          <span className="flex items-center gap-1.5 text-accent-green">
-            <span className="w-2 h-2 rounded-full bg-accent-green" />
+          <span className="flex items-center gap-1.5 text-text-secondary">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             <span className="hidden sm:inline text-text-secondary">15 Rivers / 11 Hotspots / 16 Stations Active</span>
           </span>
           <div className="text-text-secondary hidden lg:block font-mono text-[11px]">
@@ -98,8 +98,8 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
           onClick={() => setMobileTab('map')}
           className={`flex-1 py-2 px-2.5 text-xs font-semibold rounded flex items-center justify-center gap-1.5 min-h-[44px] transition-colors ${
             mobileTab === 'map'
-              ? 'bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/40'
-              : 'text-text-secondary hover:text-white bg-surface-elevated/50'
+              ? 'bg-surface-elevated text-text-primary border border-border-strong shadow-sm'
+              : 'text-text-secondary hover:text-white bg-surface-elevated/40'
           }`}
           aria-label="View Map Canvas"
         >
@@ -111,8 +111,8 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
           onClick={() => setMobileTab('layers')}
           className={`flex-1 py-2 px-2.5 text-xs font-semibold rounded flex items-center justify-center gap-1.5 min-h-[44px] transition-colors ${
             mobileTab === 'layers'
-              ? 'bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/40'
-              : 'text-text-secondary hover:text-white bg-surface-elevated/50'
+              ? 'bg-surface-elevated text-text-primary border border-border-strong shadow-sm'
+              : 'text-text-secondary hover:text-white bg-surface-elevated/40'
           }`}
           aria-label="View Layers and Filters"
         >
@@ -124,8 +124,8 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
           onClick={() => setMobileTab('inspector')}
           className={`flex-1 py-2 px-2.5 text-xs font-semibold rounded flex items-center justify-center gap-1.5 min-h-[44px] transition-colors ${
             mobileTab === 'inspector'
-              ? 'bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/40'
-              : 'text-text-secondary hover:text-white bg-surface-elevated/50'
+              ? 'bg-surface-elevated text-text-primary border border-border-strong shadow-sm'
+              : 'text-text-secondary hover:text-white bg-surface-elevated/40'
           }`}
           aria-label="View Location Dossier"
         >

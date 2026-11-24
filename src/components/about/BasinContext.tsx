@@ -5,7 +5,7 @@ export const BasinContext: React.FC = () => {
   return (
     <section className="bg-surface border border-border-subtle rounded-xl p-6 sm:p-8 space-y-6">
       <div className="flex items-center gap-2">
-        <Globe className="w-5 h-5 text-accent-cyan" />
+        <Globe className="w-5 h-5 text-text-secondary" />
         <h2 className="font-sans text-xl sm:text-2xl font-bold text-white">
           Transboundary Hydrological Context: India & Bangladesh
         </h2>
@@ -13,7 +13,7 @@ export const BasinContext: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 text-xs sm:text-sm text-text-secondary leading-relaxed">
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-accent-cyan">
+          <h3 className="text-sm font-semibold text-text-primary">
             Upstream Diversion & The Farakka Barrage
           </h3>
           <p>
@@ -33,7 +33,7 @@ export const BasinContext: React.FC = () => {
         </div>
 
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-accent-cyan">
+          <h3 className="text-sm font-semibold text-text-primary">
             The Estuarine Crucible: Sundarbans & Climate Compounding
           </h3>
           <p>

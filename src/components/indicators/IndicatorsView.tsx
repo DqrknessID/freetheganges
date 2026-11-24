@@ -79,7 +79,7 @@ export const IndicatorsView: React.FC = () => {
       {/* Title & Introduction */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <Activity className="w-5 h-5 text-accent-cyan" />
+          <Activity className="w-5 h-5 text-text-secondary" />
           <h1 className="font-sans text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
             Scientific Environmental Indicators & Time Series Analysis
           </h1>
@@ -109,9 +109,9 @@ export const IndicatorsView: React.FC = () => {
               key={param.id}
               type="button"
               onClick={() => setSelectedParam(param.id)}
-              className={`min-h-[44px] px-3.5 py-1.5 rounded-md text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-accent-cyan ${
+              className={`min-h-[44px] px-3.5 py-1.5 rounded-md text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-border-strong ${
                 selectedParam === param.id
-                  ? 'bg-surface-elevated text-text-primary border border-accent-cyan/50 font-bold shadow-sm'
+                  ? 'bg-surface-elevated text-text-primary border border-border-strong font-bold shadow-sm'
                   : 'bg-surface text-text-secondary border border-border-subtle hover:text-text-primary hover:border-border-strong'
               }`}
             >

@@ -5,7 +5,7 @@ export const SensorMethodology: React.FC = () => {
   return (
     <section className="bg-surface border border-border-subtle rounded-xl p-6 sm:p-8 space-y-6">
       <div className="flex items-center gap-2">
-        <Activity className="w-5 h-5 text-accent-cyan" />
+        <Activity className="w-5 h-5 text-text-secondary" />
         <h2 className="font-sans text-xl sm:text-2xl font-bold text-white">
           Sensor Calibration & Laboratory Audit Standards
         </h2>
@@ -22,8 +22,8 @@ export const SensorMethodology: React.FC = () => {
       {/* Multi-Tier Provenance Verification System */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
         <div className="p-4 rounded-lg bg-surface-elevated border border-border-subtle space-y-2">
-          <div className="flex items-center gap-1.5 text-accent-green font-mono text-xs font-bold">
-            <CheckCircle2 className="w-4 h-4" />
+          <div className="flex items-center gap-1.5 text-text-primary font-mono text-xs font-medium">
+            <CheckCircle2 className="w-4 h-4 text-text-muted" />
             <span>IN_SITU_OBSERVED</span>
           </div>
           <p className="text-xs text-text-secondary leading-relaxed">
@@ -32,8 +32,8 @@ export const SensorMethodology: React.FC = () => {
         </div>
 
         <div className="p-4 rounded-lg bg-surface-elevated border border-border-subtle space-y-2">
-          <div className="flex items-center gap-1.5 text-accent-cyan font-mono text-xs font-bold">
-            <ShieldCheck className="w-4 h-4" />
+          <div className="flex items-center gap-1.5 text-text-primary font-mono text-xs font-medium">
+            <ShieldCheck className="w-4 h-4 text-text-muted" />
             <span>SATELLITE_DERIVED</span>
           </div>
           <p className="text-xs text-text-secondary leading-relaxed">
@@ -42,8 +42,8 @@ export const SensorMethodology: React.FC = () => {
         </div>
 
         <div className="p-4 rounded-lg bg-surface-elevated border border-border-subtle space-y-2">
-          <div className="flex items-center gap-1.5 text-accent-amber font-mono text-xs font-bold">
-            <AlertCircle className="w-4 h-4" />
+          <div className="flex items-center gap-1.5 text-text-primary font-mono text-xs font-medium">
+            <AlertCircle className="w-4 h-4 text-text-muted" />
             <span>MODELED_SIMULATION</span>
           </div>
           <p className="text-xs text-text-secondary leading-relaxed">
@@ -52,8 +52,8 @@ export const SensorMethodology: React.FC = () => {
         </div>
 
         <div className="p-4 rounded-lg bg-surface-elevated border border-border-subtle space-y-2">
-          <div className="flex items-center gap-1.5 text-accent-red font-mono text-xs font-bold">
-            <AlertCircle className="w-4 h-4" />
+          <div className="flex items-center gap-1.5 text-text-primary font-mono text-xs font-medium">
+            <AlertCircle className="w-4 h-4 text-text-muted" />
             <span>ILLUSTRATIVE_DEMO</span>
           </div>
           <p className="text-xs text-text-secondary leading-relaxed">
@@ -64,8 +64,8 @@ export const SensorMethodology: React.FC = () => {
 
       <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-border-subtle text-xs text-text-secondary">
         <div>Geographic Coordinate Datum: <span className="font-mono">WGS 84 (EPSG:4326)</span></div>
-        <div>Intelligence Palette: <span className="font-mono">#0b0c0e / #0e111b</span></div>
-        <div className="text-accent-green font-semibold">Scientific Integrity Standard: Verified</div>
+        <div>Intelligence Architecture: <span className="font-mono">Neutral Technical UI</span></div>
+        <div className="text-text-primary font-medium">Scientific Integrity Standard: Verified</div>
       </div>
     </section>
   );

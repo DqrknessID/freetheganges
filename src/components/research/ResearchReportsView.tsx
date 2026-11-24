@@ -38,7 +38,7 @@ export const ResearchReportsView: React.FC = () => {
       {/* Page Header */}
       <div className="space-y-3">
         <div className="flex items-center gap-2">
-          <FileText className="w-5 h-5 text-accent-cyan" />
+          <FileText className="w-5 h-5 text-text-secondary" />
           <h1 className="font-sans text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
             Research Publications & Transparent Source Registry
           </h1>
@@ -56,7 +56,7 @@ export const ResearchReportsView: React.FC = () => {
           onClick={() => setActiveTab('publications')}
           className={`min-h-[44px] px-5 py-2 rounded-lg text-xs font-medium flex items-center gap-2 transition-all ${
             activeTab === 'publications'
-              ? 'bg-accent-cyan text-base font-semibold shadow-sm'
+              ? 'bg-text-primary text-base font-semibold shadow-sm'
               : 'bg-surface text-text-secondary hover:text-text-primary hover:bg-surface-elevated border border-border-subtle'
           }`}
         >
@@ -69,7 +69,7 @@ export const ResearchReportsView: React.FC = () => {
           onClick={() => setActiveTab('sources')}
           className={`min-h-[44px] px-5 py-2 rounded-lg text-xs font-medium flex items-center gap-2 transition-all ${
             activeTab === 'sources'
-              ? 'bg-accent-cyan text-base font-semibold shadow-sm'
+              ? 'bg-text-primary text-base font-semibold shadow-sm'
               : 'bg-surface text-text-secondary hover:text-text-primary hover:bg-surface-elevated border border-border-subtle'
           }`}
         >
@@ -92,7 +92,7 @@ export const ResearchReportsView: React.FC = () => {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search publications, executive summaries, tags..."
-                className="w-full h-11 pl-9 pr-3 bg-base border border-border-subtle rounded-lg text-xs sm:text-sm text-text-primary placeholder:text-text-secondary focus:border-accent-cyan focus:outline-none"
+                className="w-full h-11 pl-9 pr-3 bg-base border border-border-subtle rounded-lg text-xs sm:text-sm text-text-primary placeholder:text-text-secondary focus:border-border-strong focus:outline-none"
               />
             </div>
 
@@ -104,7 +104,7 @@ export const ResearchReportsView: React.FC = () => {
                   onClick={() => setSelectedCategory(cat)}
                   className={`min-h-[44px] px-3.5 py-1.5 rounded-lg text-xs font-medium border whitespace-nowrap transition-colors ${
                     selectedCategory === cat
-                      ? 'bg-surface-elevated text-accent-cyan border-accent-cyan/40 font-semibold'
+                      ? 'bg-surface-elevated text-text-primary border-border-strong font-semibold shadow-sm'
                       : 'bg-surface text-text-secondary border-border-subtle hover:text-text-primary'
                   }`}
                 >

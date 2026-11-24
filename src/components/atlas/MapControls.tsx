@@ -21,7 +21,7 @@ export const MapControls: React.FC<MapControlsProps> = ({
       {/* Top Left Basemap Pill */}
       <div className="absolute top-4 left-4 z-20 flex items-center gap-2 pointer-events-auto">
         <div className="bg-surface/95 border border-border-subtle rounded-md px-3 py-1.5 text-xs text-text-secondary shadow-md flex items-center gap-2">
-          <Radio className="w-3.5 h-3.5 text-accent-cyan" />
+          <Radio className="w-3.5 h-3.5 text-text-secondary" />
           <span>Esri World Dark Canvas</span>
         </div>
       </div>
@@ -54,9 +54,9 @@ export const MapControls: React.FC<MapControlsProps> = ({
           onClick={onResetBounds}
           title="Reset Map Bounds to GBM Basin"
           aria-label="Reset Map Bounds to GBM Basin"
-          className="min-h-[44px] min-w-[44px] bg-surface hover:bg-surface-elevated border border-border-subtle rounded-md p-2 text-text-primary shadow-md flex items-center justify-center transition-colors"
+          className="min-h-[44px] min-w-[44px] bg-surface hover:bg-surface-elevated border border-border-subtle rounded-md p-2 text-text-secondary hover:text-text-primary shadow-md flex items-center justify-center transition-colors"
         >
-          <RotateCcw className="w-4 h-4 text-accent-cyan" />
+          <RotateCcw className="w-4 h-4 text-text-secondary" />
         </button>
 
         <button
@@ -64,10 +64,10 @@ export const MapControls: React.FC<MapControlsProps> = ({
           onClick={onToggleFullscreen}
           title="Toggle Fullscreen"
           aria-label="Toggle Fullscreen"
-          className="min-h-[44px] min-w-[44px] bg-surface hover:bg-surface-elevated border border-border-subtle rounded-md p-2 text-text-primary shadow-md flex items-center justify-center transition-colors"
+          className="min-h-[44px] min-w-[44px] bg-surface hover:bg-surface-elevated border border-border-subtle rounded-md p-2 text-text-secondary hover:text-text-primary shadow-md flex items-center justify-center transition-colors"
         >
           {isFullscreen ? (
-            <Minimize2 className="w-4 h-4 text-accent-cyan" />
+            <Minimize2 className="w-4 h-4 text-text-primary" />
           ) : (
             <Maximize2 className="w-4 h-4 text-text-secondary hover:text-text-primary" />
           )}

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Map, Activity, ShieldCheck, Layers, Radio } from 'lucide-react';
+import { Map, Activity, ShieldCheck, Layers } from 'lucide-react';
 import { ActiveView } from '../../types';
 import { useScrollReveal } from '../../utils/useScrollReveal';
 
@@ -89,9 +89,8 @@ export const HeroHeadline: React.FC<HeroHeadlineProps> = ({
           </p>
 
           {/* Quick Status Metadata */}
-          <div className="hero-reveal flex flex-wrap items-center gap-x-5 gap-y-2.5 pt-2 text-xs text-text-secondary">
-            <span className="flex items-center gap-2">
-              <Radio className="w-3.5 h-3.5 text-accent-green" />
+          <div className="hero-reveal flex flex-wrap items-center gap-x-5 gap-y-2 pt-2 text-xs text-text-secondary">
+            <span>
               Basins Monitored: Ganges, Brahmaputra, Meghna
             </span>
             <span className="text-border-strong hidden sm:inline">•</span>
@@ -103,28 +102,28 @@ export const HeroHeadline: React.FC<HeroHeadlineProps> = ({
               Active Stations: 16 Telemetry Hubs
             </span>
             <span className="text-border-strong hidden sm:inline">•</span>
-            <span className="text-accent-cyan font-medium">
+            <span className="text-text-primary font-medium">
               Status: Independent Watchdog
             </span>
           </div>
 
           {/* Interactive CTAs with min 44px tap target */}
-          <div className="flex flex-wrap items-center gap-3.5 pt-4">
+          <div className="flex flex-wrap items-center gap-3 pt-3">
             <button
               type="button"
               onClick={() => onNavigate('atlas')}
-              className="min-h-[44px] px-6 py-2.5 rounded-lg bg-accent-cyan text-base font-semibold text-xs flex items-center gap-2 hover:bg-accent-cyan/90 transition-colors shadow-sm"
+              className="min-h-[44px] px-6 py-2.5 rounded-lg bg-text-primary text-base font-semibold text-xs flex items-center gap-2 hover:bg-zinc-200 transition-colors shadow-sm"
             >
-              <Map className="w-4 h-4" />
+              <Map className="w-4 h-4 text-base" />
               <span>Launch Environmental Atlas</span>
             </button>
 
             <button
               type="button"
               onClick={() => onNavigate('indicators')}
-              className="min-h-[44px] px-5 py-2.5 rounded-lg bg-surface-elevated border border-border-subtle text-text-primary font-medium text-xs flex items-center gap-2 hover:bg-surface-hover hover:border-accent-cyan/40 transition-colors"
+              className="min-h-[44px] px-5 py-2.5 rounded-lg bg-surface-elevated border border-border-subtle text-text-primary font-medium text-xs flex items-center gap-2 hover:bg-surface-hover hover:border-border-strong transition-colors"
             >
-              <Activity className="w-4 h-4 text-accent-cyan" />
+              <Activity className="w-4 h-4 text-text-secondary" />
               <span>Examine Indicators</span>
             </button>
 
@@ -140,36 +139,36 @@ export const HeroHeadline: React.FC<HeroHeadlineProps> = ({
         </div>
 
         {/* Quick Stats Panel */}
-        <div className="shrink-0 bg-surface-elevated/70 border border-border-subtle rounded-xl p-6 lg:p-7 lg:w-84 space-y-5">
-          <h3 className="text-xs font-semibold text-text-secondary flex items-center gap-2 tracking-wide uppercase">
-            <Layers className="w-4 h-4 text-accent-cyan" />
+        <div className="shrink-0 bg-surface-elevated/70 border border-border-subtle rounded-xl p-6 lg:p-7 lg:w-84 space-y-4">
+          <h3 className="text-xs font-medium text-text-secondary flex items-center gap-2">
+            <Layers className="w-4 h-4 text-text-muted" />
             Basin Monitored Dimensions
           </h3>
 
-          <div className="space-y-3.5 text-xs divide-y divide-border-subtle/60">
+          <div className="space-y-3 text-xs divide-y divide-border-subtle/50">
             <div className="flex justify-between pt-1">
               <span className="text-text-secondary">Total Catchment Area:</span>
-              <span className="text-text-primary font-semibold font-mono">1,720,000 km²</span>
+              <span className="text-text-primary font-mono font-medium">1,720,000 km²</span>
             </div>
-            <div className="flex justify-between pt-2.5">
+            <div className="flex justify-between pt-2">
               <span className="text-text-secondary">Riparian Population:</span>
-              <span className="text-text-primary font-semibold font-mono">650M+ Citizens</span>
+              <span className="text-text-primary font-mono font-medium">650M+ Citizens</span>
             </div>
-            <div className="flex justify-between pt-2.5">
+            <div className="flex justify-between pt-2">
               <span className="text-text-secondary">Tracked River Systems:</span>
-              <span className="text-accent-cyan font-semibold font-mono">15 Major Rivers</span>
+              <span className="text-text-primary font-mono font-medium">15 Major Rivers</span>
             </div>
-            <div className="flex justify-between pt-2.5">
+            <div className="flex justify-between pt-2">
               <span className="text-text-secondary">Documented Hotspots:</span>
-              <span className="text-accent-red font-semibold font-mono">11 High Priority</span>
+              <span className="text-text-primary font-mono font-medium">11 High Priority</span>
             </div>
-            <div className="flex justify-between pt-2.5">
+            <div className="flex justify-between pt-2">
               <span className="text-text-secondary">Water Quality Hubs:</span>
-              <span className="text-accent-green font-semibold font-mono">16 Telemetry Stations</span>
+              <span className="text-text-primary font-mono font-medium">16 Telemetry Stations</span>
             </div>
-            <div className="flex justify-between pt-2.5">
+            <div className="flex justify-between pt-2">
               <span className="text-text-secondary">Spatial Bounds:</span>
-              <span className="text-text-primary font-semibold font-mono">20°N-32°N, 73°E-98°E</span>
+              <span className="text-text-primary font-mono font-medium">20°N-32°N, 73°E-98°E</span>
             </div>
           </div>
         </div>

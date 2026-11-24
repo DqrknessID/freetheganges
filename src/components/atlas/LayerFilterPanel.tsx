@@ -83,7 +83,7 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
             value={searchQuery}
             onChange={(e) => onSearchChange(e.target.value)}
             placeholder="Search river, city, facility..."
-            className="w-full h-9 pl-8 pr-3 bg-base border border-border-subtle rounded text-xs text-text-primary placeholder:text-text-secondary focus:border-accent-cyan focus:outline-none"
+            className="w-full h-9 pl-8 pr-3 bg-base border border-border-subtle rounded text-xs text-text-primary placeholder:text-text-secondary focus:border-border-strong focus:outline-none"
           />
         </div>
       </div>
@@ -91,14 +91,14 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
       {/* Cartographic Layers */}
       <div className="space-y-2">
         <span className="text-xs font-semibold text-text-secondary flex items-center gap-1.5">
-          <Layers className="w-3.5 h-3.5 text-accent-cyan" />
+          <Layers className="w-3.5 h-3.5 text-text-secondary" />
           Cartographic Layers
         </span>
 
         <div className="space-y-1.5">
           <label className="flex items-center justify-between p-2 rounded bg-surface-elevated border border-border-subtle hover:border-border-strong cursor-pointer min-h-[44px]">
             <div className="flex items-center gap-2">
-              <span className="w-3 h-1 bg-accent-cyan rounded-full" />
+              <span className="w-3 h-0.5 bg-text-secondary rounded-full" />
               <span className="text-xs text-text-primary">River Trajectories (15)</span>
             </div>
             <input
@@ -106,7 +106,7 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
               aria-label="River Trajectories"
               checked={showRivers}
               onChange={(e) => onToggleRivers(e.target.checked)}
-              className="rounded border-border-strong text-accent-cyan focus:ring-accent-cyan min-h-[20px] min-w-[20px]"
+              className="rounded border-border-strong text-text-primary focus:ring-border-strong min-h-[20px] min-w-[20px]"
             />
           </label>
 
@@ -126,7 +126,7 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
 
           <label className="flex items-center justify-between p-2 rounded bg-surface-elevated border border-border-subtle hover:border-border-strong cursor-pointer min-h-[44px]">
             <div className="flex items-center gap-2">
-              <Building2 className="w-3.5 h-3.5 text-accent-amber" />
+              <Building2 className="w-3.5 h-3.5 text-text-secondary" />
               <span className="text-xs text-text-primary">Industrial Facilities (17)</span>
             </div>
             <input
@@ -134,13 +134,13 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
               aria-label="Industrial Facilities"
               checked={showIndustries}
               onChange={(e) => onToggleIndustries(e.target.checked)}
-              className="rounded border-border-strong text-accent-amber focus:ring-accent-amber min-h-[20px] min-w-[20px]"
+              className="rounded border-border-strong text-text-primary focus:ring-border-strong min-h-[20px] min-w-[20px]"
             />
           </label>
 
           <label className="flex items-center justify-between p-2 rounded bg-surface-elevated border border-border-subtle hover:border-border-strong cursor-pointer min-h-[44px]">
             <div className="flex items-center gap-2">
-              <Droplets className="w-3.5 h-3.5 text-accent-green" />
+              <Droplets className="w-3.5 h-3.5 text-text-secondary" />
               <span className="text-xs text-text-primary">Monitoring Stations (16)</span>
             </div>
             <input
@@ -148,13 +148,13 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
               aria-label="Monitoring Stations"
               checked={showStations}
               onChange={(e) => onToggleStations(e.target.checked)}
-              className="rounded border-border-strong text-accent-green focus:ring-accent-green min-h-[20px] min-w-[20px]"
+              className="rounded border-border-strong text-text-primary focus:ring-border-strong min-h-[20px] min-w-[20px]"
             />
           </label>
 
           <label className="flex items-center justify-between p-2 rounded bg-surface-elevated border border-border-subtle hover:border-border-strong cursor-pointer min-h-[44px]">
             <div className="flex items-center gap-2">
-              <Trees className="w-3.5 h-3.5 text-accent-cyan" />
+              <Trees className="w-3.5 h-3.5 text-text-secondary" />
               <span className="text-xs text-text-primary">Ecological Zones (7)</span>
             </div>
             <input
@@ -162,7 +162,7 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
               aria-label="Ecological Zones"
               checked={showEcoZones}
               onChange={(e) => onToggleEcoZones(e.target.checked)}
-              className="rounded border-border-strong text-accent-cyan focus:ring-accent-cyan min-h-[20px] min-w-[20px]"
+              className="rounded border-border-strong text-text-primary focus:ring-border-strong min-h-[20px] min-w-[20px]"
             />
           </label>
         </div>
@@ -171,7 +171,7 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
       {/* Severity Filter */}
       <div className="space-y-2">
         <span className="text-xs font-semibold text-text-secondary flex items-center gap-1.5">
-          <Filter className="w-3.5 h-3.5 text-accent-cyan" />
+          <Filter className="w-3.5 h-3.5 text-text-secondary" />
           Degradation Severity
         </span>
         <div className="grid grid-cols-2 gap-2">
@@ -182,8 +182,8 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
               onClick={() => onSelectSeverity(sev)}
               className={`min-h-[44px] px-3 py-1.5 rounded text-xs font-medium border text-center transition-colors ${
                 selectedSeverity === sev
-                  ? 'bg-accent-cyan/15 border-accent-cyan text-accent-cyan font-semibold'
-                  : 'bg-surface-elevated border-border-subtle text-text-secondary hover:text-text-primary hover:bg-surface-hover'
+                  ? 'bg-surface-elevated border-border-strong text-accent-cyan font-semibold shadow-sm'
+                  : 'bg-surface border-border-subtle text-text-secondary hover:text-text-primary hover:bg-surface-elevated'
               }`}
             >
               {sev}
@@ -197,7 +197,7 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
         <div className="text-text-secondary">Rigorous Spatial Bounds:</div>
         <div>Lat: <span className="font-mono">20.0000°N to 32.0000°N</span></div>
         <div>Lng: <span className="font-mono">73.0000°E to 98.0000°E</span></div>
-        <div className="text-accent-green pt-1">Passes Geospatial Bounding Audit</div>
+        <div className="text-text-secondary pt-1">Passes Geospatial Bounding Audit</div>
       </div>
     </aside>
   );

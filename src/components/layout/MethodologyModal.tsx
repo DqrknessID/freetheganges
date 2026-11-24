@@ -40,7 +40,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border-subtle bg-surface-elevated">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded bg-accent-cyan/10 border border-accent-cyan/30 text-accent-cyan">
+            <div className="p-2 rounded bg-surface border border-border-subtle text-text-secondary">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
@@ -66,8 +66,8 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
         <div data-lenis-prevent className="flex-1 overflow-y-auto p-6 space-y-6 text-sm text-text-primary">
           {/* Section 1: Watchdog Charter */}
           <section className="space-y-2">
-            <h3 className="text-sm font-semibold text-accent-cyan flex items-center gap-2">
-              <Award className="w-4 h-4 text-accent-cyan" />
+            <h3 className="text-sm font-semibold text-text-primary flex items-center gap-2">
+              <Award className="w-4 h-4 text-text-secondary" />
               1. Institutional Charter and Independent Watchdog Mandate
             </h3>
             <p className="text-text-secondary leading-relaxed">
@@ -81,13 +81,13 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
 
           {/* Section 2: Data Provenance Tiers */}
           <section className="space-y-3">
-            <h3 className="text-sm font-semibold text-accent-cyan flex items-center gap-2">
-              <Database className="w-4 h-4 text-accent-cyan" />
+            <h3 className="text-sm font-semibold text-text-primary flex items-center gap-2">
+              <Database className="w-4 h-4 text-text-secondary" />
               2. Data Provenance and Quality Assurance Tiers
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div className="p-3 rounded border border-accent-green/30 bg-accent-green/5 space-y-1">
-                <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-accent-green/20 text-accent-green border border-accent-green/40">
+              <div className="p-3 rounded border border-border-subtle bg-surface space-y-1">
+                <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-surface-elevated text-text-secondary border border-border-subtle">
                   IN_SITU_OBSERVED
                 </span>
                 <p className="text-xs text-text-secondary">
@@ -97,8 +97,8 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
                 </p>
               </div>
 
-              <div className="p-3 rounded border border-accent-cyan/30 bg-accent-cyan/5 space-y-1">
-                <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-accent-cyan/20 text-accent-cyan border border-accent-cyan/40">
+              <div className="p-3 rounded border border-border-subtle bg-surface space-y-1">
+                <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-surface-elevated text-text-secondary border border-border-subtle">
                   SATELLITE_DERIVED
                 </span>
                 <p className="text-xs text-text-secondary">
@@ -108,8 +108,8 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
                 </p>
               </div>
 
-              <div className="p-3 rounded border border-accent-amber/30 bg-accent-amber/5 space-y-1">
-                <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-accent-amber/20 text-accent-amber border border-accent-amber/40">
+              <div className="p-3 rounded border border-border-subtle bg-surface space-y-1">
+                <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-surface-elevated text-text-secondary border border-border-subtle">
                   MODELED_SIMULATION
                 </span>
                 <p className="text-xs text-text-secondary">
@@ -118,8 +118,8 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
                 </p>
               </div>
 
-              <div className="p-3 rounded border border-accent-red/30 bg-accent-red/5 space-y-1">
-                <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-semibold bg-accent-red/20 text-[#FCA5A5] border border-accent-red/40">
+              <div className="p-3 rounded border border-border-subtle bg-surface space-y-1">
+                <span className="inline-block px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-surface-elevated text-[#FCA5A5] border border-border-subtle">
                   ILLUSTRATIVE_DEMO
                 </span>
                 <p className="text-xs text-text-secondary">
@@ -132,8 +132,8 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
 
           {/* Section 3: Threshold Standards */}
           <section className="space-y-3">
-            <h3 className="text-sm font-semibold text-accent-cyan flex items-center gap-2">
-              <Info className="w-4 h-4 text-accent-cyan" />
+            <h3 className="text-sm font-semibold text-text-primary flex items-center gap-2">
+              <Info className="w-4 h-4 text-text-secondary" />
               3. Regulatory Standards and Evaluation Criteria
             </h3>
             <p className="text-text-secondary text-xs leading-relaxed">
@@ -193,8 +193,8 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
 
           {/* Section 4: Geographic Envelope */}
           <section className="space-y-2">
-            <h3 className="text-sm font-semibold text-accent-cyan flex items-center gap-2">
-              <AlertTriangle className="w-4 h-4 text-accent-cyan" />
+            <h3 className="text-sm font-semibold text-text-primary flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-text-secondary" />
               4. Geographic Scope and Spatial Envelope
             </h3>
             <p className="text-text-secondary text-xs leading-relaxed">

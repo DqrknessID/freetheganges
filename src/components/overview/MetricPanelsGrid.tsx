@@ -158,7 +158,7 @@ export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
           <h2 className="text-xl sm:text-2xl font-sans font-bold text-white flex items-center gap-2.5">
-            <Activity className="w-5 h-5 text-accent-cyan" />
+            <Activity className="w-5 h-5 text-text-secondary" />
             Transboundary Environmental Metric Panels
           </h2>
           <p className="text-xs sm:text-sm text-text-secondary mt-1">
@@ -168,7 +168,7 @@ export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }
         <button
           type="button"
           onClick={() => onNavigate('indicators')}
-          className="min-h-[44px] px-3.5 py-2 text-xs font-medium text-accent-cyan hover:underline flex items-center gap-1.5 self-start sm:self-auto"
+          className="min-h-[44px] px-3.5 py-2 text-xs font-medium text-text-secondary hover:text-text-primary hover:underline flex items-center gap-1.5 self-start sm:self-auto"
         >
           <span>All Scientific Charts</span>
           <ChevronRight className="w-4 h-4" />
@@ -215,15 +215,15 @@ export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }
               </div>
               <div className="flex justify-between items-center text-[11px]">
                 <span className="truncate">Source: {item.source}</span>
-                <span className="text-accent-cyan shrink-0 font-mono">Conf: {item.confidence}%</span>
+                <span className="text-text-secondary shrink-0 font-mono">Conf: {item.confidence}%</span>
               </div>
               <button
                 type="button"
                 onClick={() => onNavigate(item.targetView)}
-                className="w-full min-h-[44px] px-3 py-2 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-border-subtle text-accent-cyan text-xs font-medium flex items-center justify-center gap-2 transition-colors"
+                className="w-full min-h-[44px] px-3 py-2 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-border-subtle hover:border-border-strong text-text-primary text-xs font-medium flex items-center justify-center gap-2 transition-colors"
               >
                 <span>Examine in {item.targetView === 'atlas' ? 'Atlas' : 'Indicators'}</span>
-                <ArrowUpRight className="w-3.5 h-3.5" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-text-muted" />
               </button>
             </div>
           </div>

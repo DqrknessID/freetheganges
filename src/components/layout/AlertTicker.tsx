@@ -74,7 +74,7 @@ export const AlertTicker: React.FC<AlertTickerProps> = ({ onSelectAlert }) => {
       case 'Warning':
         return 'text-accent-amber';
       default:
-        return 'text-accent-cyan';
+        return 'text-text-primary';
     }
   };
 
@@ -82,9 +82,9 @@ export const AlertTicker: React.FC<AlertTickerProps> = ({ onSelectAlert }) => {
     <div className="w-full bg-base border-b border-border-subtle/80 text-xs text-text-primary px-3 sm:px-6 py-1.5 flex items-center justify-between gap-3">
       {/* Lead wire label */}
       <div className="flex items-center gap-2 shrink-0">
-        <span className="inline-flex rounded-full h-2 w-2 bg-accent-red"></span>
-        <span className="font-semibold text-accent-cyan flex items-center gap-1.5 text-xs">
-          <Radio className="w-3.5 h-3.5 text-accent-cyan" />
+        <span className="inline-flex rounded-full h-1.5 w-1.5 bg-accent-red"></span>
+        <span className="font-semibold text-text-primary flex items-center gap-1.5 text-xs">
+          <Radio className="w-3.5 h-3.5 text-text-secondary" />
           <span className="hidden sm:inline">Basin Intelligence Wire</span>
           <span className="sm:hidden">Wire</span>
         </span>
@@ -104,7 +104,7 @@ export const AlertTicker: React.FC<AlertTickerProps> = ({ onSelectAlert }) => {
         <span className="text-text-secondary font-mono shrink-0 hidden md:inline text-[11px]">
           [{currentAlert.location}]
         </span>
-        <p className="truncate text-text-primary hover:text-accent-cyan transition-colors text-[11px] sm:text-xs">
+        <p className="truncate text-text-primary hover:underline transition-colors text-[11px] sm:text-xs">
           {currentAlert.headline}
         </p>
       </button>
