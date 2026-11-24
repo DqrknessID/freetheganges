@@ -162,26 +162,6 @@ export const publicationsData: ResearchPublication[] = [
     tags: ['Delta', 'Sediment', 'Subsidence', 'Hydropolitics', 'Coastal Risk'],
   },
   {
-    id: 'pub-09',
-    title: 'Quarterly Hydrological Bulletin: Ganges-Padma Flow Regime and Dry-Season Discharge Partitioning',
-    category: 'Monitoring Update',
-    authors: ['Joint Hydrological Monitoring Taskforce'],
-    affiliation: 'Bangladesh Water Development Board & Central Water Commission Technical Desk',
-    publishedDate: '2026-11-10',
-    geographicScope: 'Hardinge Bridge to Goalundo Confluence Reach (23.8°N-24.2°N, 89.0°E-89.8°E)',
-    executiveSummary: 'Routine transboundary telemetry monitoring bulletin recording daily discharge rates, velocity profiles, and water stage levels at the Hardinge Bridge gauge station following the onset of post-monsoon low flow conditions.',
-    keyFindings: [
-      'Ganges discharge at Hardinge Bridge averaged 58,400 cusecs during the early November 10-day cycle.',
-      'Cross-sectional acoustic flow profiling indicates minor sandbar migration along the right bank revetment.',
-      'Real-time telemetry uptime maintained at 99.4% with zero loss of critical telemetry transmissions.'
-    ],
-    evidenceMethodology: 'Teledyne RDI Workhorse Rio Grande Acoustic Doppler Current Profiler (ADCP) transects verified against acoustic stage sensors.',
-    confidenceLevel: 'HIGH',
-    doiOrReference: 'BWDB-HYDRO-BULLETIN-2026-Q4',
-    downloadUrl: '/docs/publications/pub-09-bwdb-hydrology-bulletin.pdf',
-    tags: ['Hydrology', 'BWDB', 'Discharge', 'Monitoring Update', 'Transboundary'],
-  },
-  {
     id: 'pub-10',
     title: 'The 1996 Ganges Water Treaty at Thirty: Transboundary Allocation Deficits and the 2026 Renewal Horizon',
     category: 'Policy Brief',

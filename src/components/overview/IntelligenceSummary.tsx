@@ -1,23 +1,26 @@
 import React from 'react';
 import { Flame, FileText, ChevronRight, ArrowUpRight, AlertTriangle } from 'lucide-react';
 import { ActiveView } from '../../types';
+import { useScrollReveal } from '../../utils/useScrollReveal';
 
 interface IntelligenceSummaryProps {
   onNavigate: (view: ActiveView) => void;
 }
 
 export const IntelligenceSummary: React.FC<IntelligenceSummaryProps> = ({ onNavigate }) => {
+  const containerRef = useScrollReveal<HTMLElement>({ selector: '.intel-card', stagger: 0.1 });
+
   return (
-    <section className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <section ref={containerRef} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       
       {/* Intelligence Briefing Card (CFR Conflict Tracker Style Dossier) */}
-      <div className="lg:col-span-2 bg-surface border border-border-subtle rounded-xl p-6 space-y-4">
+      <div className="intel-card lg:col-span-2 bg-surface border border-border-subtle rounded-xl p-6 space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <h3 className="text-base sm:text-lg font-serif font-bold text-white flex items-center gap-2">
+          <h3 className="text-base sm:text-lg font-sans font-bold text-white flex items-center gap-2">
             <Flame className="w-4 h-4 text-accent-amber" />
             Regional Intelligence Dossier: Seasonal Hydrological Stagnation
           </h3>
-          <span className="text-[11px] font-mono text-text-secondary bg-surface-elevated px-2 py-0.5 rounded border border-border-subtle self-start sm:self-auto">
+          <span className="text-[11px] font-mono text-text-secondary self-start sm:self-auto">
             Dossier Ref: GBM-INTEL-2026-11
           </span>
         </div>
@@ -76,16 +79,16 @@ export const IntelligenceSummary: React.FC<IntelligenceSummaryProps> = ({ onNavi
       </div>
 
       {/* Featured Research Publication Teaser */}
-      <div className="bg-surface border border-border-subtle rounded-xl p-6 space-y-4 flex flex-col justify-between">
+      <div className="intel-card bg-surface border border-border-subtle rounded-xl p-6 space-y-4 flex flex-col justify-between">
         <div className="space-y-3">
           <div className="flex items-center gap-2">
             <FileText className="w-4 h-4 text-accent-cyan" />
-            <h3 className="text-base font-serif font-bold text-white">
+            <h3 className="text-base font-sans font-bold text-white">
               Featured Research Assessment
             </h3>
           </div>
 
-          <span className="px-2 py-0.5 rounded inline-block bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/30 text-[11px] font-medium">
+          <span className="text-[11px] font-medium text-accent-cyan block">
             Scientific Assessment 2026
           </span>
 

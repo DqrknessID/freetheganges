@@ -43,15 +43,6 @@ const SAMPLE_ALERTS: AlertItem[] = [
     severity: 'Warning',
     source: 'DPCC Environmental Laboratory',
   },
-  {
-    id: 'alt-05',
-    timestamp: '2026-11-18 22:00 UTC',
-    category: 'Monitoring Update',
-    location: 'Sundarbans Delta, Khulna',
-    headline: 'Dry-season salinity front extends 112 km inland along Passur River reach, reaching 8.4 PSU.',
-    severity: 'Warning',
-    source: 'BWDB Hydrological Network',
-  },
 ];
 
 export const AlertTicker: React.FC<AlertTickerProps> = ({ onSelectAlert }) => {
@@ -76,19 +67,19 @@ export const AlertTicker: React.FC<AlertTickerProps> = ({ onSelectAlert }) => {
     setCurrentIndex((prev) => (prev - 1 + SAMPLE_ALERTS.length) % SAMPLE_ALERTS.length);
   };
 
-  const severityBadgeClass = (severity: AlertItem['severity']) => {
+  const severityTextColor = (severity: AlertItem['severity']) => {
     switch (severity) {
       case 'Critical':
-        return 'bg-accent-red/20 text-accent-red border-accent-red/40';
+        return 'text-accent-red';
       case 'Warning':
-        return 'bg-accent-amber/20 text-accent-amber border-accent-amber/40';
+        return 'text-accent-amber';
       default:
-        return 'bg-accent-cyan/20 text-accent-cyan border-accent-cyan/40';
+        return 'text-accent-cyan';
     }
   };
 
   return (
-    <div className="w-full bg-[#080E17] border-b border-border-subtle/80 text-xs text-text-primary px-3 sm:px-6 py-1.5 flex items-center justify-between gap-3">
+    <div className="w-full bg-base border-b border-border-subtle/80 text-xs text-text-primary px-3 sm:px-6 py-1.5 flex items-center justify-between gap-3">
       {/* Lead wire label */}
       <div className="flex items-center gap-2 shrink-0">
         <span className="inline-flex rounded-full h-2 w-2 bg-accent-red"></span>
@@ -107,7 +98,7 @@ export const AlertTicker: React.FC<AlertTickerProps> = ({ onSelectAlert }) => {
         onClick={() => onSelectAlert?.(currentAlert)}
         title="Jump to map inspection"
       >
-        <span className={`px-1.5 py-0.5 rounded text-[10px] font-mono font-medium border uppercase tracking-wider shrink-0 ${severityBadgeClass(currentAlert.severity)}`}>
+        <span className={`text-[10px] font-mono font-medium uppercase tracking-wider shrink-0 ${severityTextColor(currentAlert.severity)}`}>
           {currentAlert.category}
         </span>
         <span className="text-text-secondary font-mono shrink-0 hidden md:inline text-[11px]">

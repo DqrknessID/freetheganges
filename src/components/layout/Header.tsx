@@ -77,10 +77,10 @@ export const Header: React.FC<HeaderProps> = ({
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-serif text-lg font-bold text-text-primary group-hover:text-accent-cyan transition-colors">
+                  <span className="font-sans text-lg font-bold text-text-primary group-hover:text-accent-cyan transition-colors">
                     FREE THE GANGES
                   </span>
-                  <span className="hidden xl:inline-block px-2 py-0.5 rounded text-[10px] font-sans font-medium bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/30">
+                  <span className="hidden xl:inline-block text-[10px] font-sans font-medium text-accent-cyan">
                     GBM BASIN MONITOR
                   </span>
                 </div>

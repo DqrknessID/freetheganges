@@ -1,6 +1,7 @@
 import React from 'react';
 import { Activity, ChevronRight, ArrowUpRight } from 'lucide-react';
 import { ActiveView } from '../../types';
+import { useScrollReveal } from '../../utils/useScrollReveal';
 
 interface MetricPanelsGridProps {
   onNavigate: (view: ActiveView) => void;
@@ -137,16 +138,18 @@ const OVERVIEW_METRICS: OverviewMetricItem[] = [
 ];
 
 export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }) => {
-  const getStatusBadge = (status: OverviewMetricItem['status']) => {
+  const gridRef = useScrollReveal<HTMLDivElement>({ selector: '.metric-card', stagger: 0.06 });
+
+  const getStatusTextColor = (status: OverviewMetricItem['status']) => {
     switch (status) {
       case 'Critical':
       case 'Severe':
-        return 'bg-accent-red/20 text-accent-red border-accent-red/40';
+        return 'text-accent-red';
       case 'Watchlist':
-        return 'bg-accent-amber/20 text-accent-amber border-accent-amber/40';
+        return 'text-accent-amber';
       case 'Monitored':
       default:
-        return 'bg-accent-green/20 text-accent-green border-accent-green/40';
+        return 'text-accent-green';
     }
   };
 
@@ -154,7 +157,7 @@ export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }
     <section className="space-y-4">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
-          <h2 className="text-xl sm:text-2xl font-serif font-bold text-white flex items-center gap-2">
+          <h2 className="text-xl sm:text-2xl font-sans font-bold text-white flex items-center gap-2">
             <Activity className="w-5 h-5 text-accent-cyan" />
             Transboundary Environmental Metric Panels
           </h2>
@@ -172,18 +175,18 @@ export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }
         </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {OVERVIEW_METRICS.map((item) => (
           <div
             key={item.id}
-            className="bg-surface border border-border-subtle rounded-lg p-4 space-y-3 hover:border-accent-cyan/40 transition-all flex flex-col justify-between"
+            className="metric-card bg-surface border border-border-subtle rounded-xl p-4 space-y-3 hover:border-accent-cyan/40 transition-all flex flex-col justify-between"
           >
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-medium text-text-secondary">
                   {item.category}
                 </span>
-                <span className={`px-2 py-0.5 rounded text-[11px] font-medium border ${getStatusBadge(item.status)}`}>
+                <span className={`text-[11px] font-medium ${getStatusTextColor(item.status)}`}>
                   {item.status}
                 </span>
               </div>

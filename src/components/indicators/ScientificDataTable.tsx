@@ -168,7 +168,7 @@ export const ScientificDataTable: React.FC<ScientificDataTableProps> = ({ observ
         <div className="space-y-1">
           <div className="flex items-center gap-2">
             <TableIcon className="w-4 h-4 text-accent-cyan" />
-            <h3 className="text-base sm:text-lg font-serif font-bold text-white">
+            <h3 className="text-base sm:text-lg font-sans font-bold text-white">
               Scientific Telemetry Records and Observations
             </h3>
           </div>

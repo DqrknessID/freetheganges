@@ -3,13 +3,15 @@ import { FileText, Database, Search } from 'lucide-react';
 import { publicationsData, sourceRegistryData } from '../../data';
 import { PublicationCard } from './PublicationCard';
 import { SourceRegistryTable } from './SourceRegistryTable';
+import { useScrollReveal } from '../../utils/useScrollReveal';
 
 export const ResearchReportsView: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'publications' | 'sources'>('publications');
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const listRef = useScrollReveal<HTMLDivElement>({ selector: 'article', stagger: 0.06 });
 
-  const categories = ['All', 'Scientific Assessment', 'Research Paper', 'Policy Brief', 'Monitoring Update'] as const;
+  const categories = ['All', 'Scientific Assessment', 'Research Paper', 'Policy Brief'] as const;
 
   // Filter and sort publications (newest first)
   const filteredPublications = useMemo(() => {
@@ -37,7 +39,7 @@ export const ResearchReportsView: React.FC = () => {
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <FileText className="w-5 h-5 text-accent-cyan" />
-          <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+          <h1 className="font-sans text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
             Research Publications & Transparent Source Registry
           </h1>
         </div>
@@ -113,7 +115,7 @@ export const ResearchReportsView: React.FC = () => {
           </div>
 
           {/* Publications Cards Grid */}
-          <div className="space-y-4">
+          <div ref={listRef} className="space-y-4">
             {filteredPublications.length === 0 ? (
               <div className="bg-surface border border-border-subtle rounded-xl p-8 text-center text-text-secondary text-sm">
                 No publications found matching your search criteria. Try a different query or select All categories.

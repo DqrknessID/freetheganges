@@ -223,7 +223,7 @@ export const AtlasMapCanvas: React.FC<AtlasMapCanvasProps> = ({
         html: `
           <div style="position:relative;width:28px;height:28px;display:flex;align-items:center;justify-content:center;cursor:pointer;">
             <div class="animate-radar-pulse" style="position:absolute;width:28px;height:28px;border-radius:9999px;background-color:${color}44;border:1.5px solid ${color};"></div>
-            <div style="width:12px;height:12px;border-radius:9999px;background-color:${color};border:2px solid #080E17;box-shadow:0 0 6px ${color};"></div>
+            <div style="width:12px;height:12px;border-radius:9999px;background-color:${color};border:2px solid #0b0c0e;box-shadow:0 0 6px ${color};"></div>
           </div>
         `,
         iconSize: [28, 28],
@@ -433,7 +433,7 @@ export const AtlasMapCanvas: React.FC<AtlasMapCanvasProps> = ({
   }, [zoomOutTrigger]);
 
   return (
-    <div className="flex-1 w-full h-full relative overflow-hidden bg-[#080E17]" data-lenis-prevent>
+    <div className="flex-1 w-full h-full relative overflow-hidden bg-base" data-lenis-prevent>
       <div 
         ref={mapContainerRef} 
         data-testid="atlas-map-canvas"

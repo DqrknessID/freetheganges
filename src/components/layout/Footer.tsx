@@ -9,17 +9,17 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onOpenMethodology }) => {
   return (
-    <footer className="w-full bg-[#050A10] border-t border-border-subtle text-text-secondary mt-auto text-xs">
+    <footer className="w-full bg-base border-t border-border-subtle text-text-secondary mt-auto text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           
           {/* Column 1: Organization & Mission */}
           <div className="space-y-3">
             <div className="flex items-center gap-2">
-              <span className="font-serif text-sm font-bold tracking-normal text-text-primary">
+              <span className="font-sans text-sm font-bold tracking-normal text-text-primary">
                 Free the Ganges Consortium
               </span>
-              <span className="px-1.5 py-0.5 rounded text-[10px] bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/30">
+              <span className="text-[10px] text-accent-cyan font-semibold">
                 Independent Monitor
               </span>
             </div>

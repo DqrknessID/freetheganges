@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Map, Activity, ShieldCheck, Layers, Radio } from 'lucide-react';
 import { ActiveView } from '../../types';
+import { useScrollReveal } from '../../utils/useScrollReveal';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -20,6 +21,7 @@ export const HeroHeadline: React.FC<HeroHeadlineProps> = ({
   onOpenMethodology,
 }) => {
   const headlineRef = useRef<HTMLSpanElement>(null);
+  const heroRevealRef = useScrollReveal<HTMLDivElement>({ selector: '.hero-reveal', stagger: 0.1 });
 
   useEffect(() => {
     if (typeof window === 'undefined' || process.env.NODE_ENV === 'test') {
@@ -59,13 +61,13 @@ export const HeroHeadline: React.FC<HeroHeadlineProps> = ({
   }, []);
 
   return (
-    <section className="bg-surface border border-border-subtle rounded-xl p-6 sm:p-10 relative overflow-hidden">
+    <section className="bg-surface border border-border-subtle rounded-xl p-6 sm:p-10 relative overflow-hidden glow-ambient">
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent-cyan/5 rounded-full blur-3xl -z-10 pointer-events-none" />
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8">
         
         {/* Main Positioning & Mission */}
-        <div className="space-y-4 max-w-3xl">
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+        <div ref={heroRevealRef} className="space-y-4 max-w-3xl">
+          <h1 className="font-sans text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
             <span className="sr-only">The Ganges is under pressure</span>
             <span aria-hidden="true" ref={headlineRef} className="inline-block">
               {headlineWords.map((word, idx) => (
@@ -79,7 +81,7 @@ export const HeroHeadline: React.FC<HeroHeadlineProps> = ({
             </span>
           </h1>
 
-          <p style={{ color: '#E2E8F0', fontSize: '15px', lineHeight: '1.75' }} className="leading-relaxed font-sans">
+          <p style={{ color: '#E2E8F0', fontSize: '15px', lineHeight: '1.75' }} className="hero-reveal leading-relaxed font-sans">
             Draining 1.72 million square kilometers across northern India and Bangladesh, the transboundary 
             Ganges-Brahmaputra-Meghna basin supports over 650 million people. Today, untreated municipal outfalls, 
             concentrated industrial chemical discharges, widespread geogenic arsenic mobilization, and upstream flow 
@@ -88,7 +90,7 @@ export const HeroHeadline: React.FC<HeroHeadlineProps> = ({
           </p>
 
           {/* Quick Status Badges */}
-          <div className="flex flex-wrap items-center gap-2 pt-1 pb-1">
+          <div className="hero-reveal flex flex-wrap items-center gap-2 pt-1 pb-1">
             <span className="px-2.5 py-1 rounded bg-surface-elevated border border-border-subtle text-xs text-text-secondary flex items-center gap-1.5">
               <Radio className="w-3.5 h-3.5 text-accent-green" />
               Basins Monitored: Ganges, Brahmaputra, Meghna
@@ -136,7 +138,7 @@ export const HeroHeadline: React.FC<HeroHeadlineProps> = ({
         </div>
 
         {/* Quick Stats Panel */}
-        <div className="shrink-0 bg-surface-elevated border border-border-strong rounded-lg p-5 lg:w-80 space-y-4">
+        <div className="shrink-0 bg-surface-elevated border border-border-subtle rounded-xl p-5 lg:w-80 space-y-4">
           <h3 className="text-xs font-semibold text-text-secondary flex items-center gap-2">
             <Layers className="w-4 h-4 text-accent-cyan" />
             Basin Monitored Dimensions

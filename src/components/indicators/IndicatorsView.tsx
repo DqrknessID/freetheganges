@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Activity } from 'lucide-react';
 import { IndicatorCategory } from '../../types';
+import { useScrollReveal } from '../../utils/useScrollReveal';
 import {
   CATEGORIES,
   PARAMETERS,
@@ -70,13 +71,16 @@ export const IndicatorsView: React.FC = () => {
     );
   }, [primaryStation, secondaryStation, currentParam.id, selectedStandard]);
 
+  const chartSectionRef = useScrollReveal<HTMLDivElement>({ y: 20, duration: 0.6 });
+  const tableSectionRef = useScrollReveal<HTMLDivElement>({ y: 20, duration: 0.6 });
+
   return (
     <div className="py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-8">
       {/* Title & Introduction */}
       <div className="space-y-2">
         <div className="flex items-center gap-2">
           <Activity className="w-5 h-5 text-accent-cyan" />
-          <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
+          <h1 className="font-sans text-3xl sm:text-4xl font-bold tracking-tight text-white leading-tight">
             Scientific Environmental Indicators & Time Series Analysis
           </h1>
         </div>
@@ -136,18 +140,22 @@ export const IndicatorsView: React.FC = () => {
       />
 
       {/* Recharts Time-Series Visualization Container */}
-      <TimeSeriesChart
-        data={chartData}
-        primaryStation={primaryStation}
-        secondaryStation={secondaryStation}
-        parameterName={currentParam.name}
-        unit={currentParam.unit}
-        selectedStandard={selectedStandard}
-        thresholdLimit={activeLimit}
-      />
+      <div ref={chartSectionRef}>
+        <TimeSeriesChart
+          data={chartData}
+          primaryStation={primaryStation}
+          secondaryStation={secondaryStation}
+          parameterName={currentParam.name}
+          unit={currentParam.unit}
+          selectedStandard={selectedStandard}
+          thresholdLimit={activeLimit}
+        />
+      </div>
 
       {/* Scientific Telemetry Observations Data Table */}
-      <ScientificDataTable observations={INITIAL_OBSERVATIONS} />
+      <div ref={tableSectionRef}>
+        <ScientificDataTable observations={INITIAL_OBSERVATIONS} />
+      </div>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Map, ExternalLink, Compass, Globe, Layers } from 'lucide-react';
 import { ActiveView } from '../../types';
 import { BasinLiveMap } from './BasinLiveMap';
+import { useScrollReveal } from '../../utils/useScrollReveal';
 
 interface BasinOverviewMapProps {
   onNavigate: (view: ActiveView) => void;
@@ -58,8 +59,8 @@ export class BasinMapErrorBoundary extends React.Component<
       return (
         <section
           style={{
-            backgroundColor: '#121E30',
-            border: '1px solid #2D4263',
+            backgroundColor: '#0e111b',
+            border: '1px solid #182234',
             borderRadius: 12,
             padding: 24,
           }}
@@ -92,13 +93,14 @@ const BasinOverviewMapInner: React.FC<BasinOverviewMapProps> = ({ onNavigate }) 
   const [mapMode, setMapMode] = useState<'interactive' | 'schematic'>(isTest ? 'schematic' : 'interactive');
   const [activeCenter, setActiveCenter] = useState<UrbanCenter | null>(null);
   const getColor = (s: UrbanCenter['status']) => STATUS_COLORS[s];
+  const sectionRef = useScrollReveal<HTMLElement>({ y: 24, duration: 0.6 });
 
   return (
-    <section className="bg-surface border border-border-strong rounded-xl p-4 sm:p-6">
+    <section ref={sectionRef} className="bg-surface border border-border-strong rounded-xl p-4 sm:p-6">
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, marginBottom: 16, flexWrap: 'wrap' }}>
         <div>
-          <h2 className="font-serif text-xl sm:text-2xl font-bold text-white flex items-center gap-2" style={{ margin: 0 }}>
+          <h2 className="font-sans text-xl sm:text-2xl font-bold text-white flex items-center gap-2" style={{ margin: 0 }}>
             <Compass style={{ width: 20, height: 20, color: '#38BDF8', flexShrink: 0 }} />
             Transboundary Basin Regional Overview
           </h2>
@@ -109,7 +111,7 @@ const BasinOverviewMapInner: React.FC<BasinOverviewMapProps> = ({ onNavigate }) 
 
         {/* Controls: Mode Switcher & Atlas Link */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', backgroundColor: '#0A1422', padding: 3, borderRadius: 8, border: '1px solid #2D4263' }}>
+          <div style={{ display: 'flex', backgroundColor: '#0b0c0e', padding: 3, borderRadius: 8, border: '1px solid #182234' }}>
             <button
               type="button"
               onClick={() => setMapMode('interactive')}

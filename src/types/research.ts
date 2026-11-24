@@ -4,7 +4,7 @@ export type ProvenanceTier = 'Tier 1' | 'Tier 2' | 'Tier 3';
 export interface ResearchPublication {
   id: string;
   title: string;
-  category: 'Research Paper' | 'Policy Brief' | 'Scientific Assessment' | 'Monitoring Update';
+  category: 'Research Paper' | 'Policy Brief' | 'Scientific Assessment';
   authors: string[];
   affiliation: string;
   publishedDate: string;

@@ -45,7 +45,7 @@ export const SourceRegistryTable: React.FC<SourceRegistryTableProps> = ({ source
     <div className="space-y-6">
       <div className="bg-surface border border-border-subtle rounded-xl p-6 space-y-5">
         <div>
-          <h2 className="font-serif text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="font-sans text-xl sm:text-2xl font-bold text-white flex items-center gap-2">
             <Database className="w-5 h-5 text-accent-cyan" />
             Comprehensive Environmental Dataset Registry
           </h2>

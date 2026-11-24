@@ -10,7 +10,7 @@ export interface NavItem {
 export interface AlertItem {
   id: string;
   timestamp: string;
-  category: 'Critical Alert' | 'Discharge Notice' | 'Hydrological Advisory' | 'Monitoring Update';
+  category: 'Critical Alert' | 'Discharge Notice' | 'Hydrological Advisory';
   location: string;
   headline: string;
   severity: 'Critical' | 'Warning' | 'Info';

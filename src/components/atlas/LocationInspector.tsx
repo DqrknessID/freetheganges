@@ -43,10 +43,10 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <span 
-              className={`px-2 py-0.5 rounded text-xs font-semibold border ${
+              className={`text-xs font-semibold ${
                 isCritical 
-                  ? 'bg-accent-red/20 text-accent-red border-accent-red/40' 
-                  : 'bg-accent-amber/20 text-accent-amber border-accent-amber/40'
+                  ? 'text-accent-red' 
+                  : 'text-accent-amber'
               }`}
             >
               {hotspot.severity} Severity
@@ -56,7 +56,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
             </span>
           </div>
 
-          <h3 className="text-base sm:text-lg font-serif font-bold text-white leading-tight">
+          <h3 className="text-base sm:text-lg font-sans font-bold text-white leading-tight">
             {hotspot.name}
           </h3>
 
@@ -133,12 +133,12 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
       <div className="space-y-5">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase border ${
+            <span className={`text-[10px] font-mono font-bold uppercase ${
               fac.complianceStatus === 'Non-Compliant'
-                ? 'bg-accent-red/20 text-accent-red border-accent-red/40'
+                ? 'text-accent-red'
                 : fac.complianceStatus === 'Partially Compliant'
-                ? 'bg-accent-green/20 text-accent-green border-accent-green/40'
-                : 'bg-accent-amber/20 text-accent-amber border-accent-amber/40'
+                ? 'text-accent-green'
+                : 'text-accent-amber'
             }`}>
               {fac.complianceStatus}
             </span>
@@ -148,7 +148,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
             </span>
           </div>
 
-          <h3 className="text-base sm:text-lg font-serif font-bold text-white leading-tight">
+          <h3 className="text-base sm:text-lg font-sans font-bold text-white leading-tight">
             {fac.name}
           </h3>
 
@@ -177,9 +177,9 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
           <span className="text-xs font-semibold text-text-secondary block">
             Discharge Chemical Profile
           </span>
-          <div className="flex flex-wrap gap-1.5">
+          <div className="flex flex-wrap gap-2">
             {fac.keyChemicals.map((chem, i) => (
-              <span key={i} className="px-2 py-0.5 rounded text-[11px] font-mono bg-base border border-border-strong text-accent-red">
+              <span key={i} className="text-[11px] font-mono text-accent-red">
                 {chem}
               </span>
             ))}
@@ -205,7 +205,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
       <div className="space-y-5">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-accent-cyan/20 text-accent-cyan border border-accent-cyan/40">
+            <span className="text-[10px] font-mono font-bold uppercase text-accent-cyan">
               {station.operatingAgency} Telemetry
             </span>
             <span className="text-xs font-mono text-accent-red font-bold">
@@ -213,7 +213,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
             </span>
           </div>
 
-          <h3 className="text-base sm:text-lg font-serif font-bold text-white leading-tight">
+          <h3 className="text-base sm:text-lg font-sans font-bold text-white leading-tight">
             {station.stationName}
           </h3>
 
@@ -264,7 +264,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
       <div className="space-y-5">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-accent-green/20 text-accent-green border border-accent-green/40">
+            <span className="text-[10px] font-mono font-bold uppercase text-accent-green">
               {zone.threatTier} Threat Tier
             </span>
             <span className="text-xs font-mono text-text-secondary">
@@ -272,7 +272,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
             </span>
           </div>
 
-          <h3 className="text-base sm:text-lg font-serif font-bold text-white leading-tight">
+          <h3 className="text-base sm:text-lg font-sans font-bold text-white leading-tight">
             {zone.name}
           </h3>
 
@@ -328,7 +328,7 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
       <div className="space-y-5">
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-accent-cyan/20 text-accent-cyan border border-accent-cyan/40">
+            <span className="text-[10px] font-mono font-bold uppercase text-accent-cyan">
               {river.system} System
             </span>
             {river.lengthKm && (

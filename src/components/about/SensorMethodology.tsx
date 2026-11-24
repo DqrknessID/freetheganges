@@ -6,7 +6,7 @@ export const SensorMethodology: React.FC = () => {
     <section className="bg-surface border border-border-subtle rounded-xl p-6 sm:p-8 space-y-6">
       <div className="flex items-center gap-2">
         <Activity className="w-5 h-5 text-accent-cyan" />
-        <h2 className="font-serif text-xl sm:text-2xl font-bold text-white">
+        <h2 className="font-sans text-xl sm:text-2xl font-bold text-white">
           Sensor Calibration & Laboratory Audit Standards
         </h2>
       </div>
@@ -64,7 +64,7 @@ export const SensorMethodology: React.FC = () => {
 
       <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-border-subtle text-xs text-text-secondary">
         <div>Geographic Coordinate Datum: <span className="font-mono">WGS 84 (EPSG:4326)</span></div>
-        <div>Intelligence Palette: <span className="font-mono">#080E17 / #101A28</span></div>
+        <div>Intelligence Palette: <span className="font-mono">#0b0c0e / #0e111b</span></div>
         <div className="text-accent-green font-semibold">Scientific Integrity Standard: Verified</div>
       </div>
     </section>

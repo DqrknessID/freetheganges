@@ -182,7 +182,7 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
             <span className="text-xs font-semibold text-accent-cyan">
               Selected Parameter Evaluation
             </span>
-            <h2 className="text-xl sm:text-2xl font-serif font-bold text-white">
+            <h2 className="text-xl sm:text-2xl font-sans font-bold text-white">
               {currentParam.name}
             </h2>
             <p className="text-xs text-text-secondary mt-1">

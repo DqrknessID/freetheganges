@@ -6,7 +6,7 @@ export const BasinContext: React.FC = () => {
     <section className="bg-surface border border-border-subtle rounded-xl p-6 sm:p-8 space-y-6">
       <div className="flex items-center gap-2">
         <Globe className="w-5 h-5 text-accent-cyan" />
-        <h2 className="font-serif text-xl sm:text-2xl font-bold text-white">
+        <h2 className="font-sans text-xl sm:text-2xl font-bold text-white">
           Transboundary Hydrological Context: India & Bangladesh
         </h2>
       </div>

@@ -36,7 +36,7 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication: p
     <article className="bg-surface border border-border-subtle rounded-xl p-6 space-y-4 hover:border-accent-cyan/40 transition-colors">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/30">
+          <span className="text-[11px] font-medium text-accent-cyan">
             {pub.category}
           </span>
           <span className="text-xs text-text-secondary">
@@ -48,7 +48,7 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication: p
         </span>
       </div>
 
-      <h2 className="text-lg sm:text-xl font-serif font-bold text-white leading-snug">
+      <h2 className="text-lg sm:text-xl font-sans font-bold text-white leading-snug">
         {pub.title}
       </h2>
 
@@ -82,9 +82,9 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication: p
       </div>
 
       <div className="pt-2 border-t border-border-subtle flex flex-wrap items-center justify-between gap-3 text-xs">
-        <div className="flex flex-wrap items-center gap-1.5">
+        <div className="flex flex-wrap items-center gap-2">
           {pub.tags.map((tag) => (
-            <span key={tag} className="px-2 py-0.5 rounded bg-base text-text-secondary border border-border-subtle text-[11px]">
+            <span key={tag} className="text-[11px] text-text-secondary">
               #{tag}
             </span>
           ))}

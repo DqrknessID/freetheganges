@@ -108,7 +108,7 @@ export const BasinLiveMap: React.FC<BasinLiveMapProps> = ({ onNavigate }) => {
         });
 
         marker.bindTooltip(
-          `<div style="font-family:sans-serif;font-size:11px;font-weight:700;color:#FFFFFF;">${city.name}</div>`,
+          `<div style="font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:700;color:#FFFFFF;">${city.name}</div>`,
           { direction: 'top', offset: [0, -12] }
         );
 
@@ -133,11 +133,11 @@ export const BasinLiveMap: React.FC<BasinLiveMapProps> = ({ onNavigate }) => {
   }, [onNavigate]);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-lg border border-border-strong bg-[#0B1524]" data-lenis-prevent>
+    <div className="relative w-full overflow-hidden rounded-xl border border-border-subtle bg-base" data-lenis-prevent>
       <div
         ref={containerRef}
         data-lenis-prevent
-        style={{ width: '100%', height: '460px', minHeight: '440px', backgroundColor: '#0B1524' }}
+        style={{ width: '100%', height: '460px', minHeight: '440px', backgroundColor: '#0b0c0e' }}
       />
     </div>
   );

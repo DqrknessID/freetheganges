@@ -8,15 +8,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        darkbase: '#080E17',
+        darkbase: '#0b0c0e',
         surface: {
-          DEFAULT: '#101A28',
-          elevated: '#152234',
-          hover: '#1E2D44',
+          DEFAULT: '#0e111b',
+          elevated: '#0d172b',
+          hover: '#12244f',
         },
         border: {
-          subtle: '#1F3050',
-          strong: '#2D4263',
+          subtle: '#182234',
+          strong: '#233354',
         },
         text: {
           primary: '#FFFFFF',
@@ -31,18 +31,20 @@ export default {
         },
       },
       backgroundColor: {
-        base: '#080E17',
+        base: '#0b0c0e',
       },
       fontFamily: {
         display: [
-          '"Newsreader"',
-          'serif',
+          '"Plus Jakarta Sans"',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          'sans-serif',
         ],
         serif: [
-          '"Newsreader"',
-          'Lora',
-          'Georgia',
-          'serif',
+          '"Plus Jakarta Sans"',
+          'sans-serif',
         ],
         sans: [
           '"Plus Jakarta Sans"',

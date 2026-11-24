@@ -36,7 +36,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
       <div className="absolute inset-0" onClick={onClose} aria-hidden="true" />
 
       {/* Modal dialog */}
-      <div data-lenis-prevent className="relative w-full max-w-4xl max-h-[90vh] bg-surface border border-border-strong rounded-lg shadow-2xl flex flex-col z-10 overflow-hidden">
+      <div data-lenis-prevent className="relative w-full max-w-4xl max-h-[90vh] bg-surface border border-border-strong rounded-xl shadow-2xl flex flex-col z-10 overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border-subtle bg-surface-elevated">
           <div className="flex items-center gap-3">
@@ -44,7 +44,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <h2 id="methodology-title" className="font-serif text-xl sm:text-2xl font-bold text-white tracking-wide">
+              <h2 id="methodology-title" className="font-sans text-xl sm:text-2xl font-bold text-white tracking-wide">
                 Scientific Methodology and Sensor Validation Disclosure
               </h2>
               <p className="text-xs text-text-secondary">

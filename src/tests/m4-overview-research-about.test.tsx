@@ -245,11 +245,11 @@ describe('Milestone 4: Research & Reports Hub and Source Registry', () => {
     expect(screen.getByRole('button', { name: /Research & Reports/i })).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /Source Registry/i })).toBeInTheDocument();
 
-    // Switch to Monitoring Update
-    const monitoringBtn = screen.getByRole('button', { name: 'Monitoring Update' });
-    await user.click(monitoringBtn);
+    // Switch to Policy Brief
+    const policyBriefBtn = screen.getByRole('button', { name: 'Policy Brief' });
+    await user.click(policyBriefBtn);
 
-    expect(screen.getByText(/Quarterly Hydrological Bulletin: Ganges-Padma Flow Regime/i)).toBeInTheDocument();
+    expect(screen.getByText(/The 1996 Ganges Water Treaty at Thirty/i)).toBeInTheDocument();
     expect(screen.queryByText(/Transboundary Arsenic Hydrodynamics/i)).not.toBeInTheDocument();
   });
 });

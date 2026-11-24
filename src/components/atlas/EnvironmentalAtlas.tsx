@@ -72,7 +72,7 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
         <div className="flex items-center gap-3">
           <span className="flex items-center gap-1.5 text-accent-cyan font-semibold">
             <Compass className="w-4 h-4 text-accent-cyan" />
-            <span className="font-serif text-sm tracking-normal text-white">GBM Basin GIS Atlas</span>
+            <span className="font-sans text-sm tracking-normal text-white">GBM Basin GIS Atlas</span>
           </span>
           <span className="hidden md:inline text-border-strong">|</span>
           <span className="hidden md:inline text-text-secondary">
@@ -164,7 +164,7 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
         </div>
 
         {/* Center Map Canvas Area (Fluid Flex-1, always full width on mobile/tablet) */}
-        <main className="flex-1 bg-[#080E17] relative flex flex-col justify-between overflow-hidden w-full h-full">
+        <main className="flex-1 bg-base relative flex flex-col justify-between overflow-hidden w-full h-full">
           {/* Map Controls Floating Overlay */}
           <MapControls
             onZoomIn={handleZoomIn}

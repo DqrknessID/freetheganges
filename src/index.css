@@ -6,12 +6,12 @@
 @tailwind utilities;
 
 :root {
-  --color-bg-base: #080E17;
-  --color-bg-surface: #101A28;
-  --color-bg-surface-elevated: #152234;
-  --color-bg-surface-hover: #1E2D44;
-  --color-border-subtle: #1F3050;
-  --color-border-strong: #2D4263;
+  --color-bg-base: #0b0c0e;
+  --color-bg-surface: #0e111b;
+  --color-bg-surface-elevated: #0d172b;
+  --color-bg-surface-hover: #12244f;
+  --color-border-subtle: #182234;
+  --color-border-strong: #233354;
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #CBD5E1;
   --color-text-muted: #CBD5E1;
@@ -22,7 +22,7 @@
 }
 
 body {
-  background-color: #080E17;
+  background-color: #0b0c0e;
   color: #FFFFFF;
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   overflow-x: hidden;
@@ -35,21 +35,21 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #080E17;
+  background: #0b0c0e;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1F3050;
+  background: #182234;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2D4263;
+  background: #233354;
 }
 
 /* Clean map and chart container styles */
 .leaflet-container {
-  background-color: #080E17 !important;
+  background-color: #0b0c0e !important;
   font-family: 'Plus Jakarta Sans', sans-serif !important;
   height: 100%;
   width: 100%;
@@ -99,4 +99,9 @@ body {
 /* Dark tile filter: applies to all Leaflet map tiles for dark intelligence aesthetic */
 .dark-tiles {
   filter: invert(1) hue-rotate(180deg) brightness(0.75) contrast(1.1) saturate(0.6) !important;
+}
+
+/* Ambient glow accent */
+.glow-ambient {
+  background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.05) 0%, rgba(18, 36, 79, 0.1) 40%, transparent 70%);
 }
