@@ -5,7 +5,8 @@ import {
   Filter, 
   Building2, 
   Droplets, 
-  Trees 
+  Trees,
+  X 
 } from 'lucide-react';
 import { SeverityTier } from '../../types';
 
@@ -24,6 +25,7 @@ interface LayerFilterPanelProps {
   onToggleEcoZones: (show: boolean) => void;
   selectedSeverity: SeverityTier | 'All';
   onSelectSeverity: (severity: SeverityTier | 'All') => void;
+  onClose?: () => void;
 }
 
 export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
@@ -41,9 +43,28 @@ export const LayerFilterPanel: React.FC<LayerFilterPanelProps> = ({
   onToggleEcoZones,
   selectedSeverity,
   onSelectSeverity,
+  onClose,
 }) => {
   return (
-    <aside className="w-80 bg-surface border-r border-border-subtle flex flex-col shrink-0 overflow-y-auto p-4 space-y-5">
+    <aside
+      data-lenis-prevent
+      style={{ touchAction: 'pan-y' }}
+      className="w-full lg:w-80 h-full bg-surface border-r border-border-subtle flex flex-col shrink-0 overflow-y-auto p-4 space-y-5"
+    >
+      {onClose && (
+        <div className="flex items-center justify-between lg:hidden pb-2 border-b border-border-subtle">
+          <span className="text-xs font-semibold text-white">Layers & Filters</span>
+          <button
+            type="button"
+            onClick={onClose}
+            className="min-h-[44px] px-3 py-1.5 rounded bg-surface-elevated border border-border-subtle text-text-secondary hover:text-text-primary text-xs flex items-center gap-1.5"
+            aria-label="Back to Map"
+          >
+            <X className="w-4 h-4" />
+            <span>Back to Map</span>
+          </button>
+        </div>
+      )}
       {/* Search Filter */}
       <div className="space-y-1.5">
         <label 

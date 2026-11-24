@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { initSmoothScroll, scrollToTop, stopLenis, startLenis } from './utils/smoothScroll';
 import { ActiveView } from './types';
 import { AlertTicker } from './components/layout/AlertTicker';
 import { Header } from './components/layout/Header';
@@ -15,6 +17,25 @@ export const App: React.FC = () => {
   const [activeView, setActiveView] = useState<ActiveView>('overview');
   const [searchQuery, setSearchQuery] = useState('');
   const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
+
+  useEffect(() => {
+    const cleanup = initSmoothScroll();
+    return () => {
+      cleanup();
+    };
+  }, []);
+
+  useEffect(() => {
+    scrollToTop();
+    if (typeof window !== 'undefined') {
+      ScrollTrigger.refresh();
+    }
+    if (activeView === 'atlas') {
+      stopLenis();
+    } else {
+      startLenis();
+    }
+  }, [activeView]);
 
   const handleSearchChange = (query: string) => {
     setSearchQuery(query);

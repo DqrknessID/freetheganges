@@ -225,8 +225,8 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
           </div>
         </div>
 
-        {/* Comparative Summary Metrics Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {/* Comparative Summary Metrics: Paired Station Cards Block */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {/* Primary Station Card */}
           <div className="p-4 rounded-lg bg-surface-elevated border border-border-subtle space-y-2">
             <div className="flex justify-between items-center text-xs font-mono">
@@ -254,25 +254,30 @@ export const MultiLocationComparison: React.FC<MultiLocationComparisonProps> = (
               {secondaryMeta?.provider || 'DoE Bangladesh'} real-time laboratory reporting station. Observed telemetry from DoE Bangladesh.
             </p>
           </div>
+        </div>
 
-          {/* Delta Variance Card */}
-          <div className="p-4 rounded-lg bg-surface-elevated border border-border-subtle space-y-2">
-            <div className="flex justify-between items-center text-xs font-mono">
-              <span className="text-text-secondary">Transboundary Variance</span>
-              <span className="text-accent-cyan font-bold">Delta (A - B)</span>
+        {/* Elevated Transboundary Variance Banner Block */}
+        <div className="p-4 sm:p-5 rounded-lg bg-surface-elevated border-l-4 border-l-accent-cyan border border-border-strong flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 text-xs font-mono">
+              <span className="text-text-secondary font-medium">Transboundary Variance</span>
+              <span className="text-accent-cyan font-bold px-1.5 py-0.5 rounded bg-accent-cyan/10 border border-accent-cyan/30 text-[10px]">
+                Delta (A - B)
+              </span>
             </div>
-            <div className="text-2xl font-bold font-mono text-accent-cyan flex items-center gap-1.5">
-              {deltaResult.delta !== null && deltaResult.delta > 0 ? (
-                <ArrowUpRight className="w-5 h-5 text-accent-cyan" />
-              ) : deltaResult.delta !== null && deltaResult.delta < 0 ? (
-                <ArrowDownRight className="w-5 h-5 text-accent-green" />
-              ) : null}
-              {deltaResult.displayDelta}{' '}
-              <span className="text-xs text-text-secondary font-normal">{currentParam.unit}</span>
-            </div>
-            <p className="text-[11px] text-text-secondary leading-relaxed">
+            <p className="text-xs text-text-secondary leading-relaxed max-w-xl">
               Comparative gradient between {primaryMeta?.name.split(',')[0]} and {secondaryMeta?.name.split(',')[0]}.
             </p>
+          </div>
+
+          <div className="text-2xl sm:text-3xl font-bold font-mono text-accent-cyan flex items-center gap-2 shrink-0">
+            {deltaResult.delta !== null && deltaResult.delta > 0 ? (
+              <ArrowUpRight className="w-6 h-6 text-accent-cyan" />
+            ) : deltaResult.delta !== null && deltaResult.delta < 0 ? (
+              <ArrowDownRight className="w-6 h-6 text-accent-green" />
+            ) : null}
+            <span>{deltaResult.displayDelta}</span>
+            <span className="text-xs text-text-secondary font-normal font-sans">{currentParam.unit}</span>
           </div>
         </div>
       </div>

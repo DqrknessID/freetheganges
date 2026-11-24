@@ -34,7 +34,12 @@ export default {
         base: '#080E17',
       },
       fontFamily: {
+        display: [
+          '"Newsreader"',
+          'serif',
+        ],
         serif: [
+          '"Newsreader"',
           'Lora',
           'Georgia',
           'serif',

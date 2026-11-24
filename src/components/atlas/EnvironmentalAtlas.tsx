@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Compass } from 'lucide-react';
+import { Compass, Map, Layers, FileText } from 'lucide-react';
 import { SeverityTier } from '../../types';
 import { hotspotsData } from '../../data';
 import { LayerFilterPanel } from './LayerFilterPanel';
@@ -30,6 +30,9 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
     data: hotspotsData[0],
   });
 
+  // Mobile view tab: 'map' | 'layers' | 'inspector'
+  const [mobileTab, setMobileTab] = useState<'map' | 'layers' | 'inspector'>('map');
+
   // Map state triggers
   const [resetTrigger, setResetTrigger] = useState(0);
   const [zoomInTrigger, setZoomInTrigger] = useState(0);
@@ -52,8 +55,14 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
     setIsFullscreen((prev) => !prev);
   };
 
+  const handleSelectEntity = (entity: SelectedEntity) => {
+    setSelectedEntity(entity);
+    setMobileTab('inspector');
+  };
+
   return (
     <div 
+      data-lenis-prevent
       className={`flex flex-col bg-base overflow-hidden ${
         isFullscreen ? 'fixed inset-0 z-50 h-screen w-screen' : 'h-[calc(100vh-4rem)]'
       }`}
@@ -82,28 +91,80 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
         </div>
       </div>
 
+      {/* Mobile Atlas Segmented Control Dock (visible on < lg) */}
+      <div className="lg:hidden flex items-center justify-around bg-surface border-b border-border-subtle p-1.5 shrink-0 z-30 gap-1.5">
+        <button
+          type="button"
+          onClick={() => setMobileTab('map')}
+          className={`flex-1 py-2 px-2.5 text-xs font-semibold rounded flex items-center justify-center gap-1.5 min-h-[44px] transition-colors ${
+            mobileTab === 'map'
+              ? 'bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/40'
+              : 'text-text-secondary hover:text-white bg-surface-elevated/50'
+          }`}
+          aria-label="View Map Canvas"
+        >
+          <Map className="w-3.5 h-3.5" />
+          <span>Map Canvas</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobileTab('layers')}
+          className={`flex-1 py-2 px-2.5 text-xs font-semibold rounded flex items-center justify-center gap-1.5 min-h-[44px] transition-colors ${
+            mobileTab === 'layers'
+              ? 'bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/40'
+              : 'text-text-secondary hover:text-white bg-surface-elevated/50'
+          }`}
+          aria-label="View Layers and Filters"
+        >
+          <Layers className="w-3.5 h-3.5" />
+          <span>Layers & Filters</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => setMobileTab('inspector')}
+          className={`flex-1 py-2 px-2.5 text-xs font-semibold rounded flex items-center justify-center gap-1.5 min-h-[44px] transition-colors ${
+            mobileTab === 'inspector'
+              ? 'bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/40'
+              : 'text-text-secondary hover:text-white bg-surface-elevated/50'
+          }`}
+          aria-label="View Location Dossier"
+        >
+          <FileText className="w-3.5 h-3.5" />
+          <span>Location Dossier</span>
+        </button>
+      </div>
+
       {/* Tri-Pane Main View Area */}
       <div className="flex-1 flex overflow-hidden relative">
-        {/* Left Filter & Layer Rail (320px) */}
-        <LayerFilterPanel
-          searchQuery={searchQuery}
-          onSearchChange={setSearchQuery}
-          showRivers={showRivers}
-          onToggleRivers={setShowRivers}
-          showHotspots={showHotspots}
-          onToggleHotspots={setShowHotspots}
-          showIndustries={showIndustries}
-          onToggleIndustries={setShowIndustries}
-          showStations={showStations}
-          onToggleStations={setShowStations}
-          showEcoZones={showEcoZones}
-          onToggleEcoZones={setShowEcoZones}
-          selectedSeverity={selectedSeverity}
-          onSelectSeverity={setSelectedSeverity}
-        />
+        {/* Left Filter & Layer Rail */}
+        <div
+          className={`${
+            mobileTab === 'layers'
+              ? 'absolute inset-0 z-30 flex flex-col w-full h-full bg-surface'
+              : 'hidden lg:flex shrink-0'
+          }`}
+        >
+          <LayerFilterPanel
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            showRivers={showRivers}
+            onToggleRivers={setShowRivers}
+            showHotspots={showHotspots}
+            onToggleHotspots={setShowHotspots}
+            showIndustries={showIndustries}
+            onToggleIndustries={setShowIndustries}
+            showStations={showStations}
+            onToggleStations={setShowStations}
+            showEcoZones={showEcoZones}
+            onToggleEcoZones={setShowEcoZones}
+            selectedSeverity={selectedSeverity}
+            onSelectSeverity={setSelectedSeverity}
+            onClose={() => setMobileTab('map')}
+          />
+        </div>
 
-        {/* Center Map Canvas Area (Fluid Flex-1) */}
-        <main className="flex-1 bg-[#080E17] relative flex flex-col justify-between overflow-hidden">
+        {/* Center Map Canvas Area (Fluid Flex-1, always full width on mobile/tablet) */}
+        <main className="flex-1 bg-[#080E17] relative flex flex-col justify-between overflow-hidden w-full h-full">
           {/* Map Controls Floating Overlay */}
           <MapControls
             onZoomIn={handleZoomIn}
@@ -127,15 +188,26 @@ export const EnvironmentalAtlas: React.FC<EnvironmentalAtlasProps> = ({ initialS
             showEcoZones={showEcoZones}
             selectedSeverity={selectedSeverity}
             searchQuery={searchQuery}
-            onSelectEntity={setSelectedEntity}
+            onSelectEntity={handleSelectEntity}
             resetTrigger={resetTrigger}
             zoomInTrigger={zoomInTrigger}
             zoomOutTrigger={zoomOutTrigger}
           />
         </main>
 
-        {/* Right Inspector Dossier Panel (384px) */}
-        <LocationInspector selectedEntity={selectedEntity} />
+        {/* Right Inspector Dossier Panel */}
+        <div
+          className={`${
+            mobileTab === 'inspector'
+              ? 'absolute inset-0 z-30 flex flex-col w-full h-full bg-surface'
+              : 'hidden lg:flex shrink-0'
+          }`}
+        >
+          <LocationInspector
+            selectedEntity={selectedEntity}
+            onClose={() => setMobileTab('map')}
+          />
+        </div>
       </div>
     </div>
   );

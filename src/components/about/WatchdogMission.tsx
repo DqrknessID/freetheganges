@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, FileCheck, Compass, Award } from 'lucide-react';
+import { ShieldCheck, FileCheck, Compass, Award, Globe2, FileCheck2, Scale } from 'lucide-react';
 import { ActiveView } from '../../types';
 
 interface WatchdogMissionProps {
@@ -61,47 +61,73 @@ export const WatchdogMission: React.FC<WatchdogMissionProps> = ({
           Core scientific and institutional principles
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-xl bg-surface border border-border-subtle space-y-3">
-            <div className="w-9 h-9 rounded bg-accent-cyan/10 border border-accent-cyan/30 flex items-center justify-center text-accent-cyan font-mono font-bold text-sm">
-              01
+        {/* Asymmetric Editorial Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Primary Featured Anchor Card (Spans 2 columns on desktop) */}
+          <div className="lg:col-span-2 p-6 sm:p-8 rounded-xl bg-surface border border-border-strong relative flex flex-col justify-between space-y-4 hover:border-accent-cyan/40 transition-colors">
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="p-2.5 rounded-lg bg-accent-cyan/10 border border-accent-cyan/30 text-accent-cyan w-fit">
+                  <Globe2 className="w-5 h-5" />
+                </div>
+                <span className="text-[11px] font-mono uppercase tracking-wider text-accent-cyan px-2 py-0.5 rounded bg-accent-cyan/10 border border-accent-cyan/20">
+                  Primary Mandate
+                </span>
+              </div>
+              <h3 className="text-base sm:text-lg font-bold text-text-primary font-sans">
+                Transboundary Pan-Basin Holism
+              </h3>
+              <p className="text-sm text-text-secondary leading-relaxed">
+                Rivers do not respect sovereign political borders. By evaluating the Ganges, Brahmaputra, and Meghna as an 
+                interconnected hydrological entity spanning India, Bangladesh, Nepal, and the Tibetan plateau, we resist 
+                fragmented national narratives and expose regional ecological dependencies.
+              </p>
             </div>
-            <h3 className="text-sm font-semibold text-text-primary font-sans">
-              Transboundary Pan-Basin Holism
-            </h3>
-            <p className="text-xs text-text-secondary leading-relaxed">
-              Rivers do not respect sovereign political borders. By evaluating the Ganges, Brahmaputra, and Meghna as an 
-              interconnected hydrological entity spanning India, Bangladesh, Nepal, and the Tibetan plateau, we resist 
-              fragmented national narratives and expose regional ecological dependencies.
-            </p>
+            <div className="pt-4 border-t border-border-subtle/70 flex flex-wrap items-center justify-between gap-2 text-xs text-text-secondary">
+              <span className="font-mono text-[11px] text-text-primary">Pan-Basin Scope: 1,720,000 km² Catchment</span>
+              <span className="font-mono text-[11px] text-accent-green">Transboundary Riparian Integrity</span>
+            </div>
           </div>
 
-          <div className="p-6 rounded-xl bg-surface border border-border-subtle space-y-3">
-            <div className="w-9 h-9 rounded bg-accent-green/10 border border-accent-green/30 flex items-center justify-center text-accent-green font-mono font-bold text-sm">
-              02
+          {/* Secondary Pillars Stack (1 column) */}
+          <div className="lg:col-span-1 flex flex-col gap-6">
+            <div className="p-6 rounded-xl bg-surface border border-border-subtle space-y-3 hover:border-accent-green/40 transition-colors flex-1 flex flex-col justify-between">
+              <div className="space-y-2.5">
+                <div className="p-2 rounded-lg bg-accent-green/10 border border-accent-green/30 text-accent-green w-fit">
+                  <FileCheck2 className="w-4 h-4" />
+                </div>
+                <h3 className="text-sm font-semibold text-text-primary font-sans">
+                  Transparent Provenance & Zero Fabrication
+                </h3>
+                <p className="text-xs text-text-secondary leading-relaxed">
+                  Every indicator displayed on FREE THE GANGES links to an authoritative physical monitoring station, 
+                  satellite overpass, or peer-reviewed citation. We explicitly distinguish between measured observations, 
+                  numerical models, and demonstrative prototypes. Missing telemetry is reported as N/D, never fabricated.
+                </p>
+              </div>
+              <div className="pt-2 text-[11px] font-mono text-accent-green">
+                Zero Fabrication Policy
+              </div>
             </div>
-            <h3 className="text-sm font-semibold text-text-primary font-sans">
-              Transparent Provenance & Zero Fabrication
-            </h3>
-            <p className="text-xs text-text-secondary leading-relaxed">
-              Every indicator displayed on FREE THE GANGES links to an authoritative physical monitoring station, 
-              satellite overpass, or peer-reviewed citation. We explicitly distinguish between measured observations, 
-              numerical models, and demonstrative prototypes. Missing telemetry is reported as N/D, never fabricated.
-            </p>
-          </div>
 
-          <div className="p-6 rounded-xl bg-surface border border-border-subtle space-y-3">
-            <div className="w-9 h-9 rounded bg-accent-amber/10 border border-accent-amber/30 flex items-center justify-center text-accent-amber font-mono font-bold text-sm">
-              03
+            <div className="p-6 rounded-xl bg-surface border border-border-subtle space-y-3 hover:border-accent-amber/40 transition-colors flex-1 flex flex-col justify-between">
+              <div className="space-y-2.5">
+                <div className="p-2 rounded-lg bg-accent-amber/10 border border-accent-amber/30 text-accent-amber w-fit">
+                  <Scale className="w-4 h-4" />
+                </div>
+                <h3 className="text-sm font-semibold text-text-primary font-sans">
+                  Statutory Benchmarking Rigor
+                </h3>
+                <p className="text-xs text-text-secondary leading-relaxed">
+                  Measurements are continuously assessed against WHO drinking guidelines, Indian Central Pollution Control 
+                  Board (CPCB) Designated Best Use classes, and Bangladesh Environmental Conservation Rules (ECR), delivering 
+                  an uncompromised audit of legal compliance.
+                </p>
+              </div>
+              <div className="pt-2 text-[11px] font-mono text-accent-amber">
+                WHO / CPCB / ECR Standards
+              </div>
             </div>
-            <h3 className="text-sm font-semibold text-text-primary font-sans">
-              Statutory Benchmarking Rigor
-            </h3>
-            <p className="text-xs text-text-secondary leading-relaxed">
-              Measurements are continuously assessed against WHO drinking guidelines, Indian Central Pollution Control 
-              Board (CPCB) Designated Best Use classes, and Bangladesh Environmental Conservation Rules (ECR), delivering 
-              an uncompromised audit of legal compliance.
-            </p>
           </div>
         </div>
       </section>

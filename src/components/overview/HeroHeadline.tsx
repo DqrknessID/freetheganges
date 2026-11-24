@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Map, Activity, ShieldCheck, Layers, Radio } from 'lucide-react';
 import { ActiveView } from '../../types';
+
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
+
+const headlineWords = ['The', 'Ganges', 'is', 'under', 'pressure'];
 
 interface HeroHeadlineProps {
   onNavigate: (view: ActiveView) => void;
@@ -11,6 +19,45 @@ export const HeroHeadline: React.FC<HeroHeadlineProps> = ({
   onNavigate,
   onOpenMethodology,
 }) => {
+  const headlineRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || process.env.NODE_ENV === 'test') {
+      return;
+    }
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      const words = headlineRef.current?.querySelectorAll('.headline-word');
+      if (words && words.length > 0) {
+        gsap.fromTo(
+          words,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.08,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: headlineRef.current,
+              start: 'top 90%',
+              toggleActions: 'play none none none',
+              once: true,
+            },
+          }
+        );
+      }
+    }, headlineRef);
+
+    return () => {
+      ctx.revert();
+    };
+  }, []);
+
   return (
     <section className="bg-surface border border-border-subtle rounded-xl p-6 sm:p-10 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-accent-cyan/5 rounded-full blur-3xl -z-10 pointer-events-none" />
@@ -18,8 +65,18 @@ export const HeroHeadline: React.FC<HeroHeadlineProps> = ({
         
         {/* Main Positioning & Mission */}
         <div className="space-y-4 max-w-3xl">
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-            The Ganges is under pressure
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+            <span className="sr-only">The Ganges is under pressure</span>
+            <span aria-hidden="true" ref={headlineRef} className="inline-block">
+              {headlineWords.map((word, idx) => (
+                <React.Fragment key={idx}>
+                  <span className="headline-word inline-block will-change-transform">
+                    {word}
+                  </span>
+                  {idx < headlineWords.length - 1 && ' '}
+                </React.Fragment>
+              ))}
+            </span>
           </h1>
 
           <p style={{ color: '#E2E8F0', fontSize: '15px', lineHeight: '1.75' }} className="leading-relaxed font-sans">

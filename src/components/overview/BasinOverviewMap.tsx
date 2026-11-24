@@ -94,7 +94,7 @@ const BasinOverviewMapInner: React.FC<BasinOverviewMapProps> = ({ onNavigate }) 
   const getColor = (s: UrbanCenter['status']) => STATUS_COLORS[s];
 
   return (
-    <section style={{ backgroundColor: '#101A28', border: '1px solid #2D4263', borderRadius: 12, padding: 24 }}>
+    <section className="bg-surface border border-border-strong rounded-xl p-4 sm:p-6">
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, marginBottom: 16, flexWrap: 'wrap' }}>
         <div>
@@ -185,12 +185,7 @@ const BasinOverviewMapInner: React.FC<BasinOverviewMapProps> = ({ onNavigate }) 
         )}
 
         {/* River Key Legend Overlay */}
-        <div style={{
-          position: 'absolute', bottom: 12, right: 12, zIndex: 10,
-          display: 'flex', alignItems: 'center', gap: 14,
-          backgroundColor: 'rgba(10,20,35,0.92)', border: '1px solid #2D4263',
-          borderRadius: 6, padding: '6px 12px', fontSize: 11, fontFamily: 'monospace', color: '#FFFFFF',
-        }}>
+        <div className="absolute bottom-3 right-3 z-10 flex flex-wrap items-center gap-2 sm:gap-3.5 bg-[#0A1422]/95 border border-border-strong rounded-md px-2.5 sm:px-3 py-1.5 text-[11px] font-mono text-white">
           {[
             { color: '#38BDF8', label: 'Ganges' },
             { color: '#4ADE80', label: 'Brahmaputra' },
@@ -380,7 +375,7 @@ const BasinOverviewMapInner: React.FC<BasinOverviewMapProps> = ({ onNavigate }) 
           </span>
         ))}
         <span style={{ fontSize: 10, fontFamily: 'monospace', color: '#CBD5E1', marginLeft: 'auto' }}>
-          Hover cities for detail · Click to open Atlas
+          Tap or hover cities for detail · Click to open Atlas
         </span>
       </div>
     </section>

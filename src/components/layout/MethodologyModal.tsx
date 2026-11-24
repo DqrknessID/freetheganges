@@ -36,7 +36,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
       <div className="absolute inset-0" onClick={onClose} aria-hidden="true" />
 
       {/* Modal dialog */}
-      <div className="relative w-full max-w-4xl max-h-[90vh] bg-surface border border-border-strong rounded-lg shadow-2xl flex flex-col z-10 overflow-hidden">
+      <div data-lenis-prevent className="relative w-full max-w-4xl max-h-[90vh] bg-surface border border-border-strong rounded-lg shadow-2xl flex flex-col z-10 overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-border-subtle bg-surface-elevated">
           <div className="flex items-center gap-3">
@@ -63,7 +63,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
         </div>
 
         {/* Content Body */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-6 text-sm text-text-primary">
+        <div data-lenis-prevent className="flex-1 overflow-y-auto p-6 space-y-6 text-sm text-text-primary">
           {/* Section 1: Watchdog Charter */}
           <section className="space-y-2">
             <h3 className="text-sm font-semibold text-accent-cyan flex items-center gap-2">
@@ -207,7 +207,7 @@ export const MethodologyModal: React.FC<MethodologyModalProps> = ({ isOpen, onCl
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between px-6 py-3.5 border-t border-border-subtle bg-surface-elevated">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-6 py-3.5 border-t border-border-subtle bg-surface-elevated">
           <span className="text-xs text-text-secondary">
             Scientific Oversight Committee: Free The Ganges Research Consortium
           </span>

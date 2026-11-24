@@ -48,7 +48,7 @@ export const ResearchReportsView: React.FC = () => {
       </div>
 
       {/* Primary Section Switcher */}
-      <div className="flex items-center gap-3 border-b border-border-subtle pb-4">
+      <div className="flex flex-wrap items-center gap-2 sm:gap-3 border-b border-border-subtle pb-4">
         <button
           type="button"
           onClick={() => setActiveTab('publications')}

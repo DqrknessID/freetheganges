@@ -6,7 +6,8 @@ import {
   Droplets,
   Building2,
   Trees,
-  Compass
+  Compass,
+  X
 } from 'lucide-react';
 import { 
   HotspotLocation, 
@@ -26,10 +27,12 @@ export type SelectedEntity =
 interface LocationInspectorProps {
   selectedEntity: SelectedEntity;
   onClearSelection?: () => void;
+  onClose?: () => void;
 }
 
 export const LocationInspector: React.FC<LocationInspectorProps> = ({
   selectedEntity,
+  onClose,
 }) => {
   const renderHotspot = (hotspot: HotspotLocation) => {
     const isCritical = hotspot.severity === 'Critical';
@@ -366,7 +369,25 @@ export const LocationInspector: React.FC<LocationInspectorProps> = ({
   };
 
   return (
-    <aside className="w-96 bg-surface border-l border-border-subtle flex flex-col shrink-0 overflow-y-auto p-5 space-y-5">
+    <aside
+      data-lenis-prevent
+      style={{ touchAction: 'pan-y' }}
+      className="w-full lg:w-96 h-full bg-surface border-l border-border-subtle flex flex-col shrink-0 overflow-y-auto p-5 space-y-5"
+    >
+      {onClose && (
+        <div className="flex items-center justify-between lg:hidden pb-3 border-b border-border-subtle">
+          <span className="text-xs font-semibold text-white">Location Dossier</span>
+          <button
+            type="button"
+            onClick={onClose}
+            className="min-h-[44px] px-3 py-1.5 rounded bg-surface-elevated border border-border-subtle text-text-secondary hover:text-text-primary text-xs flex items-center gap-1.5"
+            aria-label="Back to Map"
+          >
+            <X className="w-4 h-4" />
+            <span>Back to Map</span>
+          </button>
+        </div>
+      )}
       {selectedEntity.type === 'hotspot' && renderHotspot(selectedEntity.data)}
       {selectedEntity.type === 'industry' && renderIndustry(selectedEntity.data)}
       {selectedEntity.type === 'station' && renderStation(selectedEntity.data)}

@@ -433,10 +433,11 @@ export const AtlasMapCanvas: React.FC<AtlasMapCanvasProps> = ({
   }, [zoomOutTrigger]);
 
   return (
-    <div className="flex-1 w-full h-full relative overflow-hidden bg-[#080E17]">
+    <div className="flex-1 w-full h-full relative overflow-hidden bg-[#080E17]" data-lenis-prevent>
       <div 
         ref={mapContainerRef} 
         data-testid="atlas-map-canvas"
+        data-lenis-prevent
         className="w-full h-full min-h-[400px] z-10" 
       />
     </div>

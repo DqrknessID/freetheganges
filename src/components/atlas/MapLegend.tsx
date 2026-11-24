@@ -5,7 +5,7 @@ export const MapLegend: React.FC = () => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <div className="bg-surface/95 border border-border-subtle rounded-md shadow-xl text-xs w-64 overflow-hidden transition-all">
+    <div className="bg-surface/95 border border-border-subtle rounded-md shadow-xl text-xs w-52 sm:w-64 overflow-hidden transition-all">
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}

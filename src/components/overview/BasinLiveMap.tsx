@@ -133,9 +133,10 @@ export const BasinLiveMap: React.FC<BasinLiveMapProps> = ({ onNavigate }) => {
   }, [onNavigate]);
 
   return (
-    <div className="relative w-full overflow-hidden rounded-lg border border-border-strong bg-[#0B1524]">
+    <div className="relative w-full overflow-hidden rounded-lg border border-border-strong bg-[#0B1524]" data-lenis-prevent>
       <div
         ref={containerRef}
+        data-lenis-prevent
         style={{ width: '100%', height: '460px', minHeight: '440px', backgroundColor: '#0B1524' }}
       />
     </div>

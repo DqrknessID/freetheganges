@@ -35,7 +35,7 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication: p
   return (
     <article className="bg-surface border border-border-subtle rounded-xl p-6 space-y-4 hover:border-accent-cyan/40 transition-colors">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <span className="px-2 py-0.5 rounded text-[11px] font-medium bg-accent-cyan/15 text-accent-cyan border border-accent-cyan/30">
             {pub.category}
           </span>
@@ -90,7 +90,7 @@ export const PublicationCard: React.FC<PublicationCardProps> = ({ publication: p
           ))}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <button
             type="button"
             onClick={handleDownload}

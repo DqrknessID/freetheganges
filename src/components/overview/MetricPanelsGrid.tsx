@@ -152,7 +152,7 @@ export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }
 
   return (
     <section className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
           <h2 className="text-xl sm:text-2xl font-serif font-bold text-white flex items-center gap-2">
             <Activity className="w-5 h-5 text-accent-cyan" />
