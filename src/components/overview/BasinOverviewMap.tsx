@@ -96,9 +96,9 @@ const BasinOverviewMapInner: React.FC<BasinOverviewMapProps> = ({ onNavigate }) 
   const sectionRef = useScrollReveal<HTMLElement>({ y: 24, duration: 0.6 });
 
   return (
-    <section ref={sectionRef} className="bg-surface border border-border-strong rounded-xl p-4 sm:p-6">
+    <section ref={sectionRef} className="bg-surface border border-border-subtle rounded-xl p-6 sm:p-8 lg:p-10 space-y-6">
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 12, marginBottom: 16, flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, marginBottom: 20, flexWrap: 'wrap' }}>
         <div>
           <h2 className="font-sans text-xl sm:text-2xl font-bold text-white flex items-center gap-2" style={{ margin: 0 }}>
             <Compass style={{ width: 20, height: 20, color: '#38BDF8', flexShrink: 0 }} />

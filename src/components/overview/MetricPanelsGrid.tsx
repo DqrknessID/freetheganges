@@ -154,34 +154,34 @@ export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }
   };
 
   return (
-    <section className="space-y-4">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+    <section className="space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-1">
         <div>
-          <h2 className="text-xl sm:text-2xl font-sans font-bold text-white flex items-center gap-2">
+          <h2 className="text-xl sm:text-2xl font-sans font-bold text-white flex items-center gap-2.5">
             <Activity className="w-5 h-5 text-accent-cyan" />
             Transboundary Environmental Metric Panels
           </h2>
-          <p className="text-xs text-text-secondary mt-0.5">
+          <p className="text-xs sm:text-sm text-text-secondary mt-1">
             Verified multi-parameter baseline measurements across India and Bangladesh
           </p>
         </div>
         <button
           type="button"
           onClick={() => onNavigate('indicators')}
-          className="min-h-[44px] px-3 text-xs font-medium text-accent-cyan hover:underline flex items-center gap-1"
+          className="min-h-[44px] px-3.5 py-2 text-xs font-medium text-accent-cyan hover:underline flex items-center gap-1.5 self-start sm:self-auto"
         >
           <span>All Scientific Charts</span>
           <ChevronRight className="w-4 h-4" />
         </button>
       </div>
 
-      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {OVERVIEW_METRICS.map((item) => (
           <div
             key={item.id}
-            className="metric-card bg-surface border border-border-subtle rounded-xl p-4 space-y-3 hover:border-accent-cyan/40 transition-all flex flex-col justify-between"
+            className="metric-card bg-surface border border-border-subtle rounded-xl p-6 space-y-4 hover:border-border-strong transition-all flex flex-col justify-between"
           >
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-medium text-text-secondary">
                   {item.category}
@@ -195,8 +195,8 @@ export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }
                 {item.metric}
               </div>
 
-              <div className="flex items-baseline gap-1.5 pt-1">
-                <span className="text-2xl font-bold font-mono text-text-primary">
+              <div className="flex items-baseline gap-2 pt-1">
+                <span className="text-3xl font-bold font-mono text-text-primary tracking-tight">
                   {item.value}
                 </span>
                 <span className="text-xs font-mono text-text-secondary">
@@ -204,12 +204,12 @@ export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }
                 </span>
               </div>
 
-              <p className="text-xs text-accent-red font-medium">
+              <p className="text-xs text-accent-red font-medium leading-relaxed">
                 {item.exceedance}
               </p>
             </div>
 
-            <div className="pt-3 border-t border-border-subtle space-y-2 text-xs text-text-secondary">
+            <div className="pt-4 border-t border-border-subtle/80 space-y-2.5 text-xs text-text-secondary">
               <div className="truncate text-text-secondary">
                 Location: <span className="text-text-primary">{item.location}</span>
               </div>
@@ -220,7 +220,7 @@ export const MetricPanelsGrid: React.FC<MetricPanelsGridProps> = ({ onNavigate }
               <button
                 type="button"
                 onClick={() => onNavigate(item.targetView)}
-                className="w-full min-h-[44px] px-2 py-1.5 rounded bg-surface-elevated hover:bg-surface-hover border border-border-subtle text-accent-cyan text-xs font-medium flex items-center justify-center gap-1.5 transition-colors"
+                className="w-full min-h-[44px] px-3 py-2 rounded-lg bg-surface-elevated hover:bg-surface-hover border border-border-subtle text-accent-cyan text-xs font-medium flex items-center justify-center gap-2 transition-colors"
               >
                 <span>Examine in {item.targetView === 'atlas' ? 'Atlas' : 'Indicators'}</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />

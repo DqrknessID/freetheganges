@@ -15,7 +15,7 @@ export const OverviewDashboard: React.FC<OverviewDashboardProps> = ({
   onOpenMethodology,
 }) => {
   return (
-    <div className="space-y-10 py-6 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <div className="space-y-16 sm:space-y-20 lg:space-y-28 py-10 sm:py-14 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* 1. Hero Headline & Mission Positioning */}
       <HeroHeadline
         onNavigate={onNavigate}

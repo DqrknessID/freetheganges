@@ -11,10 +11,10 @@ export const IntelligenceSummary: React.FC<IntelligenceSummaryProps> = ({ onNavi
   const containerRef = useScrollReveal<HTMLElement>({ selector: '.intel-card', stagger: 0.1 });
 
   return (
-    <section ref={containerRef} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <section ref={containerRef} className="grid grid-cols-1 lg:grid-cols-3 gap-8">
       
       {/* Intelligence Briefing Card (CFR Conflict Tracker Style Dossier) */}
-      <div className="intel-card lg:col-span-2 bg-surface border border-border-subtle rounded-xl p-6 space-y-4">
+      <div className="intel-card lg:col-span-2 bg-surface border border-border-subtle rounded-xl p-8 sm:p-10 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <h3 className="text-base sm:text-lg font-sans font-bold text-white flex items-center gap-2">
             <Flame className="w-4 h-4 text-accent-amber" />

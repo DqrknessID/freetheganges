@@ -100,8 +100,3 @@ body {
 .dark-tiles {
   filter: invert(1) hue-rotate(180deg) brightness(0.75) contrast(1.1) saturate(0.6) !important;
 }
-
-/* Ambient glow accent */
-.glow-ambient {
-  background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.05) 0%, rgba(18, 36, 79, 0.1) 40%, transparent 70%);
-}
